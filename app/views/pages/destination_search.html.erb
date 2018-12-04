@@ -1,0 +1,13 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.visitcalifornia.com/sites/default/files/styles/welcome_image/public/VCW_TI_6_Hero_CC_BigSur_coast_TS_1280x642_0.jpg');">
+  <div class="box">
+    <div class="banner-content">
+      <p>Search</p>
+        <div class="form-wrapper" style="width: 150px; margin: 0 auto;">
+          <%= simple_form_for :query, url: search_results_path, method: "get"  do |t| %>
+          <%= t.stting :destination, label: "Where", as: :string, placeholder: "Anywhere" %>
+          <%= t.button :submit, "Go", class: "search_button" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
