@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_105704) do
+ActiveRecord::Schema.define(version: 2018_12_04_160511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_105704) do
     t.integer "runway_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "time_zone"
   end
 
   create_table "ride_mates", force: :cascade do |t|
@@ -39,14 +40,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_105704) do
   create_table "trips", force: :cascade do |t|
     t.string "terminal"
     t.string "destination"
-    t.float "destination_lattitude"
-    t.float "destination_longitude"
-    t.time "time"
-    t.date "date"
+    t.float "lattitude"
+    t.float "longitude"
+    t.datetime "time"
     t.bigint "user_id"
     t.integer "ride_mates_limit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "airport_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
