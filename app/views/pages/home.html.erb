@@ -1,19 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%#= simple_form_for @trips do |t| %>
-<%#= t.input :city %>
-<%#= t.input :airport %>
-<%#= t.input :terminal %>
-<%#= t.button :submit, "Go", class: "search_button" %>
-<%# end  %>
 
-<%= link_to "Destination Search", destination_search_path %>
-                                
-<div class="btn-full">
-  Submit
-</div>
-<br>
-<br>
-<div class="btn-border">
-  Submit
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Pages#home</h1>
+      <p>Find me in app/views/pages/home.html.erb</p>
+
+      <div class="box">
+        <div class="banner-content">
+  <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
+          <%= t.input :airport, placeholder: "airport name"%>
+          <ul class="suggestfions">
+          </ul>
+          <%= t.input :terminal %>
+          <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
+  <%= t.button :submit, "Go", class: "search_button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
