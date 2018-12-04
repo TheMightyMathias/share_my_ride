@@ -1,8 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= simple_form_for @trips do |t| %>
-<%= t.input :city %>
-<%= t.input :airport %>
-<%= t.input :terminal %>
-<% end  %>
+<%#= simple_form_for @trips do |t| %>
+<%#= t.input :city %>
+<%#= t.input :airport %>
+<%#= t.input :terminal %>
+<%#= t.button :submit, "Go", class: "search_button" %>
+<%# end  %>
+
+<%= link_to "Destination Search", destination_search_path %>
