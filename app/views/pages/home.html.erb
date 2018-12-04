@@ -1,20 +1,18 @@
-
-<div class="container">
+<diV class="page-container" >
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <h1>Pages#home</h1>
-      <p>Find me in app/views/pages/home.html.erb</p>
-
-      <div class="box">
-        <div class="banner-content">
-  <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
-          <%= t.input :airport, placeholder: "airport name"%>
-          <ul class="suggestfions">
-          </ul>
-          <%= t.input :terminal %>
-          <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
-  <%= t.button :submit, "Go", class: "search_button" %>
-          <% end %>
+      <h1 class="valueprop">Find ride <br> mates and <br> share a trip</h1>
+        <h4>Let's find your ridemate</h4>
+         <div class="box">
+           <div class="banner-content">
+            <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
+            <%= t.input :airport, placeholder: "airport name"%>
+            <ul class="suggestfions">
+            </ul>
+            <%= t.input :terminal %>
+            <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
+            <%= t.button :submit, "Go", class: "btn-full" %>
+            <% end %>
         </div>
       </div>
     </div>
