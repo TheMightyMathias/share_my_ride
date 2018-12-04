@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_161849) do
     t.integer "runway_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "time_zone"
   end
 
   create_table "ride_mates", force: :cascade do |t|
@@ -39,14 +40,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_161849) do
   create_table "trips", force: :cascade do |t|
     t.string "terminal"
     t.string "destination"
-    t.float "destination_lattitude"
-    t.float "destination_longitude"
-    t.time "time"
-    t.date "date"
+    t.float "lattitude"
+    t.float "longitude"
+    t.datetime "time"
     t.bigint "user_id"
     t.integer "ride_mates_limit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "airport_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
