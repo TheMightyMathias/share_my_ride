@@ -17,6 +17,10 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem "geocoder"
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
@@ -27,5 +31,5 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', groups: [:development, :test]
 end
