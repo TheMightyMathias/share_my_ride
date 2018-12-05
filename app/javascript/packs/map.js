@@ -11,21 +11,15 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10'
   });
-}
-
-if (mapElement) {
-// [ ... ]
   const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
     new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(marker.infoWindow.content))
       .addTo(map);
   })
-}
-
-if (mapElement) {
-  // [ ... ]
 
   if (markers.length === 0) {
     map.setZoom(1);
@@ -41,19 +35,8 @@ if (mapElement) {
   }
 }
 
-if (mapElement) {
-// [ ... ]
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML(marker.infoWindow.content))
-      .addTo(map);
-  })
-// [ ... ]
-}
 
-const addressInput = document.getElementById('trip_destination');
+const addressInput = document.getElementById('query_destination');
 
 if (addressInput) {
   const places = require('places.js');
