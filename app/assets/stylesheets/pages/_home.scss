@@ -1,4 +1,8 @@
-// Specific CSS for your home-page
+.box {
+  position: relative;
+  top: 200px;
+}
+
 html {
   height: 100%;
 }
@@ -28,6 +32,7 @@ body {
 }
 
 .page-container {
+  margin:90px;
   margin:150px;
   display:flex;
 }
@@ -36,7 +41,6 @@ body {
 #home-form {
   color: white;
   width: auto;
-
 }
 
 .home-btm {

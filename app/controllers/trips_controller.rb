@@ -8,4 +8,10 @@ class TripsController < ApplicationController
       @trips = Trip.all.order('created_at DESC')
     end
   end
+
+  private
+
+  def search_params
+    params.require(:query).permit(:destination, :airport, :terminal)
+  end
 end

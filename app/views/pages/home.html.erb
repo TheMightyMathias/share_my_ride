@@ -7,8 +7,8 @@
            <div id = "home-form">
             <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
             <%= t.input :airport, placeholder: "airport name", label_html: { class: 'label-form' }%>
-            <!-- <ul class="suggestfions">
-            </ul> -->
+              <ul class="suggestions">
+              </ul>
             <%= t.input :terminal %>
             <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
             <%= t.button :submit, "Go", class: "btn-full home-btm" %>
