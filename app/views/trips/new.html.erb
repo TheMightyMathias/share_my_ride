@@ -1,0 +1,17 @@
+<h1>Hello</h1>
+<div class="box">
+	<div id = "home-form">
+		<%= simple_form_for @trip do |t| %>
+		<%= t.input :airport, placeholder: "airport name", label_html: { class: 'label-form' }%>
+		<ul class="suggestions">
+		</ul>
+		<%= t.input :terminal %>
+		<%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
+		 <%= t.input :time, as: :string,  required: false, input_html: {class: "datepicker", value: Time.now} %>
+		<%= t.button :submit, "Go", class: "btn-full btn-sm home-btm" %>
+		</span>
+		<% end %>
+	</div>
+</div>
+
+
