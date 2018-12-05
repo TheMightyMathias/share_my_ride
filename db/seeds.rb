@@ -25,7 +25,7 @@ json.each do |airport|
     iata_code: airport['code'],
     name: airport['name'],
     longitude: airport['lon'],
-    lattitude: airport['lat'],
+    latitude: airport['lat'],
     runway_length: airport['runway_length'],
     elev: airport['elev'],
     time_zone: airport['tz'],
@@ -109,7 +109,7 @@ puts "creating trips"
 Trip.create!({
   terminal: '2',
   destination: 'Placa de Catalunya',
-  lattitude: 41.3870154,
+  latitude: 41.3870154,
   longitude: 2.1700471000000334,
   time: Time.new(2018,12,14,12,30),
   # date: Date.new(2018,12,14),
@@ -122,7 +122,7 @@ Trip.create!({
 Trip.create!({
   terminal: '2',
   destination: 'Placa de Catalunya',
-  lattitude: 41.3870154,
+  latitude: 41.3870154,
   longitude: 2.1700471000000334,
   time: Time.new(2018,12,14,12,40),
   # date: Date.new(2018,12,14),
@@ -134,7 +134,7 @@ Trip.create!({
 Trip.create!({
   terminal: '2',
   destination: 'Passeig de Gracia',
-  lattitude: 41.39307009999999,
+  latitude: 41.39307009999999,
   longitude: 2.163815999999997,
   time: Time.new(2018,12,14,12,50),
   # date: Date.new(2018,12,14),
@@ -146,7 +146,7 @@ Trip.create!({
 Trip.create!({
   terminal: '2',
   destination: 'Passeig de Gracia',
-  lattitude: 41.39307009999999,
+  latitude: 41.39307009999999,
   longitude: 2.163815999999997,
   time: Time.new(2018,12,14,12,55),
   # date: Date.new(2018,12,14),
@@ -158,7 +158,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Arc de Triomphe',
-  lattitude: 48.8737793,
+  latitude: 48.8737793,
   longitude: 2.2950155999999424,
   time: Time.new(2018,12,16,14,30),
   # date: Date.new(2018,12,14),
@@ -170,7 +170,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Arc de Triomphe',
-  lattitude: 48.8737793,
+  latitude: 48.8737793,
   longitude: 2.2950155999999424,
   time: Time.new(2018,12,16,14,35),
   # date: Date.new(2018,12,14),
@@ -182,7 +182,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Arc de Triomphe',
-  lattitude: 48.8737793,
+  latitude: 48.8737793,
   longitude: 2.2950155999999424,
   time: Time.new(2018,12,16,15,00),
   # date: Date.new(2018,12,14),
@@ -194,7 +194,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Tour Eiffel',
-  lattitude: 48.85589859999999,
+  latitude: 48.85589859999999,
   longitude: 2.298087500000065,
   time: Time.new(2018,12,16,15,05),
   # date: Date.new(2018,12,14),
@@ -206,7 +206,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Venice Beach',
-  lattitude: 33.9936153,
+  latitude: 33.9936153,
   longitude: -118.4799099,
   time: Time.new(2018,12,17,12,30),
   # date: Date.new(2018,12,14),
@@ -218,7 +218,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Venice Beach',
-  lattitude: 33.9936153,
+  latitude: 33.9936153,
   longitude: -118.4799099,
   time: Time.new(2018,12,17,12,45),
   # date: Date.new(2018,12,14),
@@ -230,7 +230,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Universal Studios Hollywood',
-  lattitude: 34.13811680000001,
+  latitude: 34.13811680000001,
   longitude: -118.35337830000003,
   time: Time.new(2018,12,17,12,30),
   # date: Date.new(2018,12,14),
@@ -242,7 +242,7 @@ Trip.create!({
 Trip.create!({
   terminal: '1',
   destination: 'Universal Studios Hollywood',
-  lattitude: 34.13811680000001,
+  latitude: 34.13811680000001,
   longitude: -118.35337830000003,
   time: Time.new(2018,12,17,13,00),
   # date: Date.new(2018,12,14),

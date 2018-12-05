@@ -3,7 +3,7 @@ class CreateTrips < ActiveRecord::Migration[5.2]
     create_table :trips do |t|
       t.string :terminal
       t.string :destination
-      t.float :lattitude
+      t.float :latitude
       t.float :longitude
       t.datetime :time
       t.references :user, foreign_key: true

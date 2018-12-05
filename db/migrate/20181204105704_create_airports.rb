@@ -5,7 +5,7 @@ class CreateAirports < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :iata_code
       t.float :longitude
-      t.float :lattitude
+      t.float :latitude
       t.integer :elev
       t.integer :runway_length
 
