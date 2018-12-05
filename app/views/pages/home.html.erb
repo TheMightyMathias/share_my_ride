@@ -1,17 +1,17 @@
 <diV class="page-container" >
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-sm-12">
       <h1 class="valueprop">Find ride <br> mates and <br> share a trip</h1>
         <h4>Let's find your ridemate</h4>
          <div class="box">
-           <div class="banner-content">
+           <div id = "home-form">
             <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
-            <%= t.input :airport, placeholder: "airport name"%>
-            <ul class="suggestfions">
-            </ul>
+            <%= t.input :airport, placeholder: "airport name", label_html: { class: 'label-form' }%>
+            <!-- <ul class="suggestfions">
+            </ul> -->
             <%= t.input :terminal %>
             <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
-            <%= t.button :submit, "Go", class: "btn-full" %>
+            <%= t.button :submit, "Go", class: "btn-full home-btm" %>
             <% end %>
         </div>
       </div>
