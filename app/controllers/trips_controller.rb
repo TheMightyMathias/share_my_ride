@@ -1,4 +1,8 @@
 class TripsController < ApplicationController
+  def show
+    @trips = Trip.find(params[:id])
+  end
+
   def search_results
     if params[:query]
       sql_query = "destination ILIKE :query"
