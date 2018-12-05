@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :trips
   get '/search', to: "trips#search", as: :search
+  get 'profiles', to: 'profiles#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
