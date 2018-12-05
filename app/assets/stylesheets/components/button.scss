@@ -36,3 +36,40 @@
   margin-right: 30%;
   box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.075);
 }
+
+// Button to create Trip
+.circle-btn {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(45deg, #A234D5, #D74059);
+  position: relative;
+  border-color: white;
+  border-width: 3px;
+  border-style: solid;
+
+}
+
+.circle-btn .bar {
+  margin: 0 auto;
+  position: absolute;
+  background-color: white;
+  z-index: 2;
+
+}
+
+.circle-btn .horizontal {
+  width: 70%;
+  height: 10%;
+  left: 15%;
+  top: 45%;
+  border-radius: 5px;
+}
+
+.circle-btn .vertical {
+  width: 10%;
+  height: 70%;
+  left: 45%;
+  top: 15%;
+  border-radius: 5px;
+}
