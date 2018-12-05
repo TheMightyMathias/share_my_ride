@@ -9,6 +9,11 @@ class TripsController < ApplicationController
     end
   end
 
+  def new
+    @trip = Trip.new
+    # @trip.time = Time.now
+  end
+
   private
 
   def search_params
