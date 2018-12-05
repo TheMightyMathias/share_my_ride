@@ -11,7 +11,7 @@ puts "Destroying current DB"
 Airport.destroy_all
 User.destroy_all
 Trip.destroy_all
-RideMate.destroy_all
+Ridemate.destroy_all
 
 puts "Seeding airports worldwide"
 
@@ -255,42 +255,42 @@ puts "12 trips created"
 
 puts "Creating RideMate"
 
-RideMate.create({
+Ridemate.create({
   user_id: 8,
   trip_id: 1,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 9,
   trip_id: 1,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 10,
   trip_id: 2,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 11,
   trip_id: 3,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 12,
   trip_id: 3,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 13,
   trip_id: 4,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 7,
   trip_id: 5,
 })
 
-RideMate.create({
+Ridemate.create({
   user_id: 8,
   trip_id: 6,
 })
