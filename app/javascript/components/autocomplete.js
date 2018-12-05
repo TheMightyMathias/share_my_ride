@@ -33,7 +33,6 @@ function displayMatches(airports) {
     return `
     <li>
       <span class="name">${airportName}, ${airportIcao}</span>
-      <span class="runway_length">${location.runway_length}</span>
     </li>
     `;
   }).join('');
