@@ -10,7 +10,7 @@
               <ul class="suggestions">
               </ul>
             <%= t.input :terminal %>
-            <%= t.input :destination, label: "Destination", as: :string, placeholder: "Where are you going?" %>
+            <%= t.input :destination, id: "trip_destination", label: "Destination", as: :string, placeholder: "Where are you going?" %>
             <%= t.button :submit, "Go", class: "btn-full home-btm" %>
             <% end %>
         </div>
