@@ -9,31 +9,29 @@ body {
   height:100vh  !important;
 }
 
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -10px;
+}
+
   h4 {
     color:white;
     font-size:17px;
   }
 
-.page-container {
- margin-top:10px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-
 .valueprop {
   font-size: 35px;
   color:white;
   font-family: Helvetica-Bold;
-  padding-bottom: 25px;
+  padding-bottom: 18px;
   // margin-top: -70px;
 }
 
 .box {
-  // justify-content:center;
-  // position: relative;
   top: 100px;
 }
 
@@ -44,14 +42,21 @@ body {
   font-size:13px;
   justify-content: center
   ::placeholder {
-    font-size:15px;
+    font-size:16px;
   }
 }
 
 .home-btm {
 // margin-left: 40px;
 // position:relative;
+//centers the button
 width: 40%;
 margin-left: 25%;
 margin-right: 30%
+}
+
+.form-control {
+  height: 32px;
+  // font-size: 16px;
+  margin-bottom: -5px;
 }
