@@ -31,6 +31,11 @@ class TripsController < ApplicationController
   def show
   end
 
+  def new
+    @trip = Trip.new
+    # @trip.time = Time.now
+  end
+
   private
 
   def search_params
