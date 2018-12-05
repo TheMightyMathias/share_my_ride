@@ -1,22 +1,24 @@
 class TripsController < ApplicationController
   def search
-    if params[:query]
+    @trips = Trip.all.order('created_at DESC')
+    if params[:query][:airport]
       airport_name = params[:query][:airport][0...-5]
-      air_id = Airport.where(name:airport_name).ids.join.to_i
-      @trips = Trip.where(airport_id:air_id).order("created_at DESC").where.not(user: current_user)
       @params = search_params
-    else
-      @trips = Trip.all.order('created_at DESC')
+      # air_id = Airport.where(name: airport_name).ids.join.to_i
+      # @trips = Trip.where(airport_id: air_id).order("created_at DESC").where.not(user: current_user)
+      @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC").where.not(user: current_user)
     end
-
-
-      @markers = @trips.map do |trip|
-        {
-          lng: trip.longitude,
-          lat: trip.latitude
-        }
-      end
-  end
+    if params[:query][:terminal] && params[:query][:airport]
+      @trips = @trips.where("terminal @@ '#{params[:query][:terminal]}'")
+    end
+    # @terminals = @trips.map { |trip| trip.terminal }
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+    end
+  end #-> at the end of the action rails will render the template
 
   def confirmation
     @trips = Trip.where.not(latitude: nil, longitude: nil)
