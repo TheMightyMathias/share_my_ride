@@ -1,5 +1,36 @@
 // Specific CSS for your home-page
+<<<<<<< HEAD
 .box {
   position: relative;
   top: 200px;
+=======
+html {
+  height: 100%;
+}
+
+body {
+  background:#4A2450;
+  background-image: linear-gradient(30deg, #D33F63 0%, rgba(162,52,213,0.15) 30%);
+  margin: auto;
+  width: auto;
+
+  // #overlay {
+  //   background-image: radial-gradient(50% 103%, #D33F63 0%, rgba(162,52,213,0.00) 100%);
+  // }
+  h4 {
+    color:white;
+    font-size:20px;
+  }
+
+}
+.valueprop {
+  font-size: 40px;
+  color:white;
+  font-family: Helvetica-Bold;
+  padding-bottom: 150px;
+}
+
+.page-container {
+  margin:90px;
+>>>>>>> 1e1fb0c63216c79094db689ec10ccad6bd405644
 }

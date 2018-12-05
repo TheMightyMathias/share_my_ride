@@ -1,15 +1,31 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  // opacity: 1;
+  background: #4A2450;
+  border-bottom: 1px solid #A535CF;
   transition: all 0.3s ease;
   height: 70px;
-  padding: 0px 30px;
+  width:auto;
+  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.nav_share{
+  display:inline;
+  font-family: Helvetica-Bold;
+  color:white;
+}
+
+.nav_share.share{
+  font-family: Helvetica-Bold;
+  color: #BD10E0;
+  letter-spacing: 0;
+  text-align: left;
+
+}
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
