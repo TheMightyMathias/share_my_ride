@@ -3,10 +3,14 @@
   <div class="row">
     <% @trips.each do |trip| %>
       <div class="col-xs-12 col-md-6 col-md-6">
+        <div class="link">
         <%= link_to trip_path(trip, query: @params) do %>
           <h5>Terminal: <%= trip.terminal %></h5>
-          <h5>Destination: <%= trip.destination %></h5>
-          <h5>Ride Mates Allowed: <%= trip.ride_mates_limit %></h5><br><br>
+          <h5>Trip Destination: <%= trip.destination %></h5>
+          <h5>Your Destination: <%= params[:query][:destination] %></h5>
+          <h5>Ride Mates Allowed: <%= trip.ride_mates_limit %></h5>
+        </div>
+          <h5>Trip leaving at: <%= trip.time %></h5><br><br>
         <% end %>
       </div>
     <% end %>

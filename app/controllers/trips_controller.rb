@@ -7,8 +7,6 @@ class TripsController < ApplicationController
     if params[:query][:airport]
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
-      # air_id = Airport.where(name: airport_name).ids.join.to_i
-      # @trips = Trip.where(airport_id: air_id).order("created_at DESC").where.not(user: current_user)
       @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC").where.not(user: current_user)
     end
     if params[:query][:terminal] && params[:query][:airport]
@@ -34,6 +32,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @trip = Trip.find(params[:id])
   end
 
   def new
@@ -44,6 +43,6 @@ class TripsController < ApplicationController
   private
 
   def search_params
-    params.require(:query).permit(:destination, :airport, :terminal, :air_id)
+    params.require(:query).permit(:destination, :airport, :terminal, :air_id, :longitude, :latitude)
   end
 end

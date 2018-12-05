@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_161849) do
+ActiveRecord::Schema.define(version: 2018_12_05_174726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 2018_12_04_161849) do
     t.string "time_zone"
   end
 
-  create_table "ride_mates", force: :cascade do |t|
+  create_table "ridemates", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_ride_mates_on_trip_id"
-    t.index ["user_id"], name: "index_ride_mates_on_user_id"
+    t.index ["trip_id"], name: "index_ridemates_on_trip_id"
+    t.index ["user_id"], name: "index_ridemates_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_161849) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ride_mates", "trips"
-  add_foreign_key "ride_mates", "users"
+  add_foreign_key "ridemates", "trips"
+  add_foreign_key "ridemates", "users"
   add_foreign_key "trips", "users"
 end

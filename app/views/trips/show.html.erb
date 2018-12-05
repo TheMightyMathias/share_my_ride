@@ -1,0 +1,23 @@
+<h1 style="color: white;">Welcome to the Show page</h1>
+
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3><%= current_user.email %></h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p><strong>I am not sure yet!</strong></p>
+    <p>
+      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price">€345</p>
+  </div>
+</div>
+
+ <%= link_to "JOIN", trip_ridemates_path(@trip.id),
+              method: :create,
+              data: { confirm: "Are you sure?" }, class: "delete-car" %>
