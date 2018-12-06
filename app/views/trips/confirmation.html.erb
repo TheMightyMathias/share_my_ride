@@ -5,11 +5,26 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div> -->
-  <h2>Your Trip Summary</h2>
 
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div style="margin-left: 10px;">
+          <h2>Meet your Ridemates at :</h2>
+          <h4>
+            <%= @trip.airport.name %>
+            <br>
+            Terminal : <%= @trip.terminal %>
+          </h4>
+        </div>
+        <div class="card">
+          <div class="avatar">
+          </div>
+          <div class="ride-info">
+            <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
+            <h4> <u>Drop off</u> : <%= @trip.destination %></h4>
+        </div>
+        </div>
         <!-- Card for the trip.user -->
         <div class="card">
           <div class="avatar">
@@ -25,7 +40,7 @@
               <li id="terminal">Name :<%= @trip.user.first_name %></li>
 
               <br>
-              <li id="destination"><b>Email :</b><%= @trip.user.email %></li>
+              <li id="destination"><b>Email: </b><%= @trip.user.email %></li>
             </ul>
             <div class="ride-footer">
               <div id="ride-date">
@@ -50,7 +65,7 @@
               <li id="terminal">Name :<%= mate.first_name %></li>
 
               <br>
-              <li id="destination"><b>Email :</b><%= mate.email %></li>
+              <li id="destination"><b>Email: </b><%= mate.email %></li>
             </ul>
             <div class="ride-footer">
               <div id="ride-date">
@@ -62,11 +77,4 @@
         <% end  %>
       </div>
     </div>
-
-    <div class="card">
-      <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
-    </div>
-
-
-
   </div>
