@@ -1,23 +1,24 @@
-h2 {
+.h2search {
   margin-left: 10px;
 }
 
-h4{
+.h4search{
   margin-left:15px;
+  margin-right:9px;
+  font-size:13px;
+
 }
 
-// .container {
-//   display: inline-flex;
-//   flex-wrap: wrap;
-//   justify-content: left;
-//   align-content: space-around;
-//   flex-direction: row;
-// }
 
 .card {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
+  border: 1px solid rgba(220,224,244,0.4);
+  margin-bottom: 8px;
+  box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
+  // border-bottom: 1px solid rgba(220,224,244,0.4);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .card:last-child {
@@ -25,16 +26,17 @@ h4{
 }
 
 .user-avatar {
-    width:60px;
-    height:60px;
+    width:50px;
+    height:50px;
     border-radius: 50%;
+    margin: 5px;
 }
 
 .ride-info {
   // align-items: center;
   // padding: 20px;
   color: white;
-  margin-left:20px;
+  margin-left:10px;
   margin-top: 5px;
   margin-bottom: 10px;
 
@@ -46,7 +48,7 @@ h4{
 
 .ride-footer {
   color: white;
-  padding-bottom: 5px;
+  // padding-bottom: 5px;
   margin-top: 15px;
   p {
     margin: 0;
@@ -62,17 +64,23 @@ h4{
 }
 
 #terminal{
-  font-size:12px;
+  font-size:11px;
+  color: white;
 }
 
 #destination{
-  font-size:15px;
+  font-size:12px;
+  color: white;
 }
 
 #ride-date{
- font-size:12px;
+ font-size:10px;
+ color: white;
 }
 
 #ride-sum{
-  font-size:12px;
+  font-size:11px;
+  color: white;
+  text-decoration: none;
+  color: inherit;
 }
