@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     @trip = Trip.new
     @trip.time = session[:search]["time"]
     @trip.terminal = session[:search]["terminal"]
-    airport_name = session[:search]["airport"].split(",")[1].strip
+    airport_name = session[:search]["airport"].split(",")[1].strip.upcase
     @trip.airport_id = Airport.find_by(iata_code:airport_name).id
     @trip.destination = session[:search]["destination"]
   end
