@@ -1,12 +1,13 @@
-html {
+html, body {
   height: 100%;
 }
 
 body {
   background:#4A2450;
+
   background-image: linear-gradient(45deg, #D33F63 0%, rgba(162,52,213,0.15) 30%);
   justify-content: center;
-  height:100vh  !important;
+  background-size: cover;
 }
 
   h4 {
@@ -55,7 +56,7 @@ input.form-control {
   }
 }
 
-.home-btm {
+.home-btn {
 // margin-left: 40px;
 // position:relative;
 //centers the button

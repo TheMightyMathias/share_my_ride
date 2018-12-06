@@ -6,7 +6,15 @@
         <% @trips.each do |trip| %>
       <div class="card">
         <div class="user-avatar">
-          <img class="avatar-sm" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+          <!-- <img class="avatar-sm" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan"> -->
+          <% if current_user.photo.blank? %>
+          <%= cl_image_tag "user-login-icon-14",  {id: "navbar-wagon-menu", class: "avatar dropdown-toggle", data: {toggle: :dropdown}} %>
+
+          <% else %>
+          <%= cl_image_tag current_user.photo,  {id: "navbar-wagon-menu", class: "avatar dropdown-toggle", data: {toggle: :dropdown}} %>
+
+         <% end %>
+
         </div>
         <div class="ride-info">
           <%= link_to trip_path(trip, query: @params) do %>
@@ -14,7 +22,7 @@
             <p><%= trip.destination %> </p>
           <div class="ride-footer">
             <div class="ride-date">
-              <p>Departure: <%= trip.time %></p>
+              <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
             </div>
             <div class='ride-sum'>
               <p>Ride Mates: <%= trip.ride_mates_limit %></p>
