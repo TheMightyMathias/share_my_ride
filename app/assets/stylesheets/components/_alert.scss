@@ -3,10 +3,12 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 0;
-  text-align: center;
+  margin: 15px;
+  text-align: top;
   color: white;
-  width:85%;
+  width:90%;
+  height:8%;
+  font-size: 14px;
 }
 .alert-info {
   background: #AF37B8;
