@@ -5,8 +5,34 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div> -->
-<h2>Hello</h2>
-<%= @trip.user.first_name %>
-<%= @trip.airport.name %>
-<%= @trip.terminal %>
-<%= @trip.time %>
+<h2>Your Trip Summary</h2>
+<div class="card">
+  <div class="user-avatar">
+    <% if @trip.user.photo.blank? %>
+      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+      <% else %>
+      <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+  <%= @trip.user.username  %>
+  <%= @trip.user.email  %>
+</div>
+<%  @mates.each do |mate| %>
+<div class="card">
+  <div class="user-avatar">
+    <% if mate.photo.blank? %>
+      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+      <% else %>
+      <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+  <%= mate.username %>
+  <%= mate.email %>
+</div>
+<% end  %>
+
+<div class="card">
+  <p>Meet Up Time: <%= @trip.time %></p>
+  <p>From: <%= @trip.airport.name %></p>
+  <p>To: <%= @trip.destination %></p>
+</div>
