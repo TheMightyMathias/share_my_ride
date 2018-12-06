@@ -9,6 +9,7 @@
           <h5>Trip Destination: <%= trip.destination %></h5>
           <h5>Your Destination: <%= params[:query][:destination] %></h5>
           <h5>Ride Mates Allowed: <%= trip.ride_mates_limit %></h5>
+          <h5><%= trip.longitude %></h5>
         </div>
           <h5>Trip leaving at: <%= trip.time %></h5><br><br>
         <% end %>
