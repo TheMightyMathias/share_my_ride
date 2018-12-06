@@ -20,8 +20,16 @@ input#query_airport {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+.suggestions {
+  list-style-type: none;
+}
+
+.suggestions ul {
+  background-color: gray;
+}
 .suggestions li {
   width: 100%;
+  padding-left: 5px;
 }
 .suggestions li:nth-child(even) {
   // transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
@@ -38,3 +46,16 @@ input#query_airport {
   background-color: yellow;
 }
 
+.algolia-places.form-control{
+  background-color: gray;
+}
+
+.ap-suggestion {
+  background-color: gray;
+}
+
+input.form-control {
+  color: black !important;
+  font-family: sans-serif;
+  font-size: 14px;
+}

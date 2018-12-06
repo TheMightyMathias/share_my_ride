@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
       <h1 class="valueprop">Find ride <br> mates and <br> share a trip</h1>
-        <h4>Let's find your ridemate</h4>
+        <h4>Let's find your perfect ridemates</h4><br>
          <div class="box">
            <div id = "home-form">
             <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
-            <%= t.input :airport, placeholder: "airport name", label_html: { class: 'label-form' } %>
+            <%= t.input :airport, placeholder: "Choose your Airport", label_html: { class: 'label-form' } %>
               <ul class="suggestions">
               </ul>
-            <%= t.input :terminal %>
+            <%= t.input :terminal, placeholder: "Choose your Terminal" %>
             <%= t.input :destination, id: "trip_destination", label: "Destination", as: :string, placeholder: "Where are you going?", label_html: { class: 'label-form' } %>
-            <%= t.input :time, as: :string,  required: false, input_html: {class: "datepicker", value: Time.now.strftime("%e %b %Y %H:%M:%S%p")}, label_html: { class: 'label-form' } %>
+            <%= t.input :time, as: :string,  required: false, input_html: {class: "datepicker", value: Time.now }, label_html: { class: 'label-date' } %>
             <%= t.button :submit, "Go", class: "btn-full home-btn" %>
             <% end %>
         </div>
