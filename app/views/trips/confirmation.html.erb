@@ -4,36 +4,69 @@
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div> -->
-<h2>Your Trip Summary</h2>
-<div class="card">
-  <div class="user-avatar">
-    <% if @trip.user.photo.blank? %>
-      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-      <% else %>
-      <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  </div>
-  <%= @trip.user.username  %>
-  <%= @trip.user.email  %>
-</div>
-<%  @mates.each do |mate| %>
-<div class="card">
-  <div class="user-avatar">
-    <% if mate.photo.blank? %>
-      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-      <% else %>
-      <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  </div>
-  <%= mate.username %>
-  <%= mate.email %>
-</div>
-<% end  %>
+  ></div> -->
+  <h2>Your Trip Summary</h2>
 
-<div class="card">
-  <p>Meet Up Time: <%= @trip.time %></p>
-  <p>From: <%= @trip.airport.name %></p>
-  <p>To: <%= @trip.destination %></p>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <!-- Card for the trip.user -->
+        <div class="card">
+          <div class="avatar">
+            <% if @trip.user.photo.blank? %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+            <% end %>
+          </div>
+          <div class="ride-info">
+            <ul class="trip-list">
+              <li id="terminal">Username: <%= @trip.user.username %></li>
+              <li id="terminal">Name :<%= @trip.user.first_name %></li>
 
+              <br>
+              <li id="destination"><b>Email :</b><%= @trip.user.email %></li>
+            </ul>
+            <div class="ride-footer">
+              <div id="ride-date">
+                <!-- Could put the score when reviews implemented -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Cards for ridemates -->
+        <%  @mates.each do |mate| %>
+        <div class="card">
+          <div class="avatar">
+            <% if mate.photo.blank? %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
+            <% end %>
+          </div>
+          <div class="ride-info">
+            <ul class="trip-list">
+              <li id="terminal">Username: <%= mate.username %></li>
+              <li id="terminal">Name :<%= mate.first_name %></li>
+
+              <br>
+              <li id="destination"><b>Email :</b><%= mate.email %></li>
+            </ul>
+            <div class="ride-footer">
+              <div id="ride-date">
+                <!-- Could put the score when reviews implemented -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end  %>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
+    </div>
+
+
+
+  </div>
