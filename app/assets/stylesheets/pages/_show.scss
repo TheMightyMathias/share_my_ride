@@ -10,20 +10,7 @@
 .message-body {
   flex-grow: 1;
 }
-.message-name {
-  padding-left: 10px;
-  min-width: 100px;
-}
-.message-name h3 {
-  font-size: 13px;
-  margin-bottom: 0px;
-}
-.message-name p {
-  font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
-  margin-top: 5px;
-}
+
 .message-body {
   padding-left: 10px;
   font-size: 13px;
@@ -40,16 +27,4 @@
 .message-body p {
   margin: 6px 0;
 }
-.message-status {
-  font-size: 14px;
-  font-weight: bold;
-}
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
-}
+

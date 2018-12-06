@@ -1,27 +1,45 @@
-<h2 style="color: white;" class="h2_search">Search Results</h2>
-<div class="cards-container">
+<h2>Search Results</h2>
+<h2>My destination <%= params[:query][:destination] %></h2>
+<div class="container">
   <div class="row">
-    <% @trips.each do |trip| %>
-      <div class="col-xs-12 col-md-6 col-md-6">
-        <div class="link">
-        <%= link_to trip_path(trip, query: @params) do %>
-          <h5>Terminal: <%= trip.terminal %></h5>
-          <h5>Trip Destination: <%= trip.destination %></h5>
-          <h5>Your Destination: <%= params[:query][:destination] %></h5>
-          <h5>Ride Mates Allowed: <%= trip.ride_mates_limit %></h5>
-          <h5><%= trip.longitude %></h5>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <% @trips.each do |trip| %>
+      <div class="card">
+        <div class="user-avatar">
+          <img class="avatar-sm" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
         </div>
-          <h5>Trip leaving at: <%= trip.time %></h5><br><br>
-        <% end %>
+        <div class="ride-info">
+          <%= link_to trip_path(trip, query: @params) do %>
+            <h5>Terminal <%= trip.terminal %></h5>
+            <p><%= trip.destination %> </p>
+          <div class="ride-footer">
+            <div class="ride-date">
+              <p>Departure: <%= trip.time %></p>
+            </div>
+            <div class='ride-sum'>
+              <p>Ride Mates: <%= trip.ride_mates_limit %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
+    </div>
   </div>
+    <div class='new-ride'>
+    <%= link_to new_trip_path do %>
+    <div class=circle-btn>
+      <div class="bar horizontal"></div>
+      <div class="bar vertical"></div>
+    </div>
+    <% end %>
+  </div>
+
 </div>
 
-<div
-  id="map"
-  style="width: 100%;
-  height: 300px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+
+
+
+
+
+

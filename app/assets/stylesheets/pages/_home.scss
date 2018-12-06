@@ -10,30 +10,36 @@ body {
 }
 
   h4 {
-    color:white;
-    font-size:17px;
+  color:white;
+  font-size:17px;
   }
 
+// input {
+//    background-color: rgba(255, 255, 255, 0.5);
+// }
+
+input.form-control {
+  color:white;
+}
+
 .page-container {
- margin-top:10px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: -10px;
 }
 
 
 .valueprop {
-  font-size: 35px;
+  font-size: 30px;
   color:white;
   font-family: Helvetica-Bold;
-  padding-bottom: 25px;
+  padding-bottom: 18px;
   // margin-top: -70px;
 }
 
 .box {
-  // justify-content:center;
-  // position: relative;
   top: 100px;
 }
 
@@ -42,16 +48,36 @@ body {
   color: white;
   width: auto;
   font-size:13px;
-  justify-content: center
+  justify-content: center;
   ::placeholder {
-    font-size:15px;
+    font-size:16px;
+    // color: white;
   }
 }
 
 .home-btm {
 // margin-left: 40px;
 // position:relative;
+//centers the button
 width: 40%;
 margin-left: 25%;
-margin-right: 30%
+margin-right: 30%;
+margin-top: 5px;
 }
+
+.form-control {
+  height: 32px;
+  // font-size: 16px;
+  margin-bottom: -5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #725175;
+}
+
+
+
+
+
+
+
+
+
