@@ -19,6 +19,27 @@ class TripsController < ApplicationController
         lat: trip.latitude
       }
     end
+    
+    destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
+
+    destination_marker = {
+      lng: destination_coordinates[1],
+      lat: destination_coordinates[0]
+    }
+
+      @markers << destination_marker
+      # @markers.last
+  end #-> at the end of the action rails will render the template
+
+  def confirmation
+    @trips = Trip.where.not(latitude: nil, longitude: nil)
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+      return @markers
+    end
     session[:search] = params[:query]
   end #-> at the end of the action rails will render the template
 
