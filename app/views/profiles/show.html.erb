@@ -1,20 +1,34 @@
 
-<% if @user.photo.blank? %>
-<img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png' style="height:150px;">
-<% else %>
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <ddiv class="col-sm-offset-4 col-sm-4">
+
+      <!-- SIDEBAR USERPIC -->
+      <div class="profile-userpic">
+      <% if @user.photo.blank? %>
+      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png' class="img-responsive" ">
+      <% else %>
+      <%= cl_image_tag @user.photo, class: "img-responsive" %>
+      <% end %>
+      <div class="profile-info">
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <%= @user.first_name %>
+
+          </div>
+          <div class="profile-usertitle-job">
+            Email : <%= @user.email %><br>
+          </div>
+        </div>
+        <div class="profile-userbuttons">
+          <%= link_to edit_user_registration_path(current_user) do %>
+          <i class="btn-border"> Edit Profile</i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <br>
-
-
-Full name: <%= @user.first_name %><br>
-Email : <%= @user.email %><br>
-
-
-<%= link_to edit_user_registration_path(current_user) do %>
-<i class="far fa-edit"> Edit Profile</i>
-<% end %>
-
-
-
-
+<br>
