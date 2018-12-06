@@ -1,5 +1,14 @@
 <h2>Search Results</h2>
-<h4>My destination <%= params[:query][:destination] %></h4>
+<h4><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%></h4>
+<div class="box">
+<div
+  id="map"
+  style="width:300px; margin:0 auto;
+  height: 200px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -35,7 +44,9 @@
     <% end %>
     </div>
   </div>
-    <div class='new-ride'>
+     <div class='new-ride'>
+    <h4>Can't find a trip you love?</h4>
+    <h4>Add a New Trip!</h4>
     <%= link_to new_trip_path do %>
     <div class=circle-btn>
       <div class="bar horizontal"></div>
@@ -43,7 +54,6 @@
     </div>
     <% end %>
   </div>
-
 </div>
 
 
