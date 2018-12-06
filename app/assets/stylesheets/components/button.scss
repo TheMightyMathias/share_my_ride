@@ -1,3 +1,4 @@
+//solid back ground button only used on home page
 .btn-full {
   background: linear-gradient(45deg, #A234D5, #D74059);
   width: 105px;
@@ -16,6 +17,7 @@
     color: white;
 }
 
+//transparent button used on all other pages
 .btn-border {
   border-image: linear-gradient(45deg, #A234D5, #D74059);
   background:rgba(162, 52, 213, 0.2);
