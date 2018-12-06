@@ -45,6 +45,12 @@ class TripsController < ApplicationController
 
   def confirmation
     @trip = Trip.find(params["id"])
+    @ridemates = Ridemate.where(trip:@trip)
+    @mates = []
+    @ridemates.each do |ridemate|
+      @mates << ridemate.user
+    end
+
     # @trips = Trip.where.not(latitude: nil, longitude: nil)
     # @markers = @trips.map do |trip|
     #   {
