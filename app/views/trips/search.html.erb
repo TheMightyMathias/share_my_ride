@@ -1,22 +1,31 @@
 <h2>Search Results</h2>
-<h2>My destination <%= params[:query][:destination] %></h2>
+<h4>My destination <%= params[:query][:destination] %></h4>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <% @trips.each do |trip| %>
       <div class="card">
-        <div class="user-avatar">
-          <img class="avatar-sm" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+        <div class="avatar">
+          <img class="user-avatar" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+          <%# if current_user.photo.blank? %>
+          <%#= cl_image_tag "user-login-icon-14",  {class: "user-avatar-blnk"} %>
+          <%# else %>
+          <%#= cl_image_tag current_user.photo,  {class: "user-avatar"} %>
+
+         <%# end %>
+
         </div>
         <div class="ride-info">
           <%= link_to trip_path(trip, query: @params) do %>
-            <h5>Terminal <%= trip.terminal %></h5>
-            <p><%= trip.destination %> </p>
+          <ul class="trip-list">
+            <li id="terminal">Terminal <%= trip.terminal %></li>
+            <li id="destination"><%= trip.destination %></li>
+          </ul>
           <div class="ride-footer">
-            <div class="ride-date">
-              <p>Departure: <%= trip.time %></p>
+            <div id="ride-date">
+              <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
             </div>
-            <div class='ride-sum'>
+            <div id='ride-sum'>
               <p>Ride Mates: <%= trip.ride_mates_limit %></p>
               <% end %>
             </div>
