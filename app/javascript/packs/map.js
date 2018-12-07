@@ -12,14 +12,27 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     style: 'mapbox://styles/mapbox/streets-v10'
   });
   const markers = JSON.parse(mapElement.dataset.markers);
-
-  const destination_marker = markers[markers.length - 1];
-
-  markers.forEach((marker) => {
+  // Add all markers to the map except for the last one, which is the users destination
+  markers.slice(0, -1).forEach((marker) => {
     new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
       .addTo(map);
   })
+
+  // Add the users marker to the map
+  new mapboxgl.Marker()
+   .setLngLat(markers[markers.length - 1])
+   .addTo(map);
+
+   // Target the last marker that was added to the map
+  const svg = map
+    .getContainer()
+    .querySelectorAll('.mapboxgl-marker')[markers.length - 1]
+    .childNodes[0]
+  // Apply a class to the users' marker
+  svg.classList.add("user-marker");
+
+
       // .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
       // .setHTML(marker.infoWindow.content))
 

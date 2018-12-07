@@ -12,12 +12,16 @@
         </div>
         <% t =  @trip.time - Time.now %>
         <% m = t/60 %>
-        <%# if m > 1440 %>
-          <%# d = m/1440 %>
-          <%# else %>
-          <%# d = m %>
-          <%# end %>
-        <div style="color: white;"><strong>Trip leaving in approx: </strong><%= m.round %> minutes</div>
+        <div style="color: white;"><strong>Trip leaving in approx: </strong>
+        <% if m > 1440 %>
+          <% d = m/1440 %>
+        <%= d.round %> days
+          <% else %>
+          <% d = m %>
+          <%= m.round %> minutes
+          <% end %>
+        </div>
+
         <% if m < 15 %>
         <div style="color: white; font-family: sans-serif;"><strong>Hurry! Trip leaving soon!</strong></div>
         <% else %>
@@ -79,10 +83,9 @@
           <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
           <h4> <u>Drop off</u> : <%= @trip.destination %></h4>
         </div>
-
 <div
   id="map"
-  style="width:370px; margin:0 auto;
+  style="width:350px; margin:0 auto;
   height: 200px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
