@@ -39,7 +39,6 @@ class TripsController < ApplicationController
         lng: trip.longitude,
         lat: trip.latitude
       }
-      return @markers
     end
     session[:search] = params[:query]
   end #-> at the end of the action rails will render the template
