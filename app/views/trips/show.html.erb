@@ -1,22 +1,72 @@
-<h1 style="color: white;">Welcome to the Show page</h1>
+<h4 class="h4show" style="color: white;">Your selected trip details are below. Please click join to confirm this trip:</h4>
+  <diV class="container" >
+    <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="card show-user">
+      <div class="avatar">
+        <% if @trip.user.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+          <% end %>
+      </div>
+      <div class="ride-info-show">
+        <ul class="trip-list">
+          <li id="terminal">Name :<%= @trip.user.first_name %></li>
 
-<div class="message">
-  <img class="avatar-sm" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-  <div class="message-name">
-    <h3><%= current_user.email %></h3>
-    <p>10/07/17</p>
+          <li> I'm a full stack developer here for Rails training program</li>
+        </ul>
+        <div class="ride-footer">
+          <div id="ride-date">
+            <!-- Could put the score when reviews implemented -->
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="message-body">
-    <p><strong>I am not sure yet!</strong></p>
-    <p>
-      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
-    </p>
-  </div>
-  <div class="message-status">
+        <!-- trip details card -->
+    <div class="card trip-details">
+      <ul>
+      <li>Meet Up Time: <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+      <li>Terminal: <%= @trip.terminal %></li>
+      <li>To: <%= @trip.destination %></li>
+      </ul>
+    </div>
 
+
+  <div class="card">
+        <div class="avatar">
+        <% if @trip.user.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+          <% end %>
+      </div>
+     <div class="avatar">
+        <% if @trip.user.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+          <% end %>
+      </div>
+           <div class="avatar">
+        <% if @trip.user.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+          <% end %>
+      </div>
+           <div class="avatar">
+        <% if @trip.user.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+          <% end %>
+      </div>
+    </div>
+
+      <%= link_to "JOIN", trip_ridemates_path(@trip.id),
+      method: :create,
+      data: { confirm: "Are you sure?" }, class: "delete-car" %>
+    </div>
   </div>
 </div>
-
- <%= link_to "JOIN", trip_ridemates_path(@trip.id),
-              method: :create,
-              data: { confirm: "Are you sure?" }, class: "delete-car" %>
