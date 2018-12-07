@@ -1,5 +1,5 @@
 <h2 class="h2search">Search Results</h2>
-<h4 class="h4search"><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%></h4>
+<h4 class="h4search"><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%></h4><br>
 <div class="box">
   <div
   id="map"
@@ -7,7 +7,7 @@
   height: 200px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+  ></div><br>
 </div>
 <div class="container">
  <div class="row">
@@ -46,7 +46,7 @@
      <% end %>
    </div>
  </div>
- <div class='new-ride'>
+ <div class='new-ride text-center'>
    <h4>Can't find a trip you love?</h4>
    <h4>Add a New Trip!</h4>
    <%= link_to new_trip_path do %>
