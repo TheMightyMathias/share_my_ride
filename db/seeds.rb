@@ -437,11 +437,6 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 8,
-  trip_id: 1,
-})
-
-Ridemate.create({
   user_id: 10,
   trip_id: 4,
 })
@@ -470,6 +465,7 @@ Ridemate.create({
   user_id: 18,
   trip_id: 8,
 })
+
 
 Ridemate.create({
   user_id: 22,
