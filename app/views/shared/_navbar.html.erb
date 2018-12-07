@@ -67,8 +67,8 @@
         <li><%= link_to profiles_path do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %></li>
-          <li><a href="#">Other one</a></li>
-          <li><a href="#">Other one</a></li>
+          <li> <%= link_to "Sign In", new_user_session_path%></li>
+          <li><%= link_to "Sign Up", new_user_registration_path%></li>
         </ul>
       </div>
     </div>
