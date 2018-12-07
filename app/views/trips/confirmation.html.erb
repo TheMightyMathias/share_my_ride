@@ -31,7 +31,7 @@
             <% if @trip.user.photo.blank? %>
             <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
             <% else %>
-            <%= cl_image_tag @user.photo, {class: "user-avatar"} %>
+            <%= cl_image_tag @trip.user.photo, {class: "user-avatar"} %>
             <% end %>
           </div>
           <div class="ride-info">
