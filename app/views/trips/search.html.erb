@@ -15,7 +15,11 @@
         <% @trips.each do |trip| %>
       <div class="card">
         <div class="avatar">
-          <img class="user-avatar" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+          <% if trip.user.photo.blank? %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+          <% end %>
           <%# if current_user.photo.blank? %>
           <%#= cl_image_tag "user-login-icon-14",  {class: "user-avatar-blnk"} %>
           <%# else %>
