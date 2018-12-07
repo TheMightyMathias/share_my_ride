@@ -10,21 +10,22 @@
   ></div><br>
 </div>
 <div class="container">
- <div class="row">
-   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-     <% @trips.each do |trip| %>
-     <div class="card">
-       <div class="avatar">
-         <!-- <img class="user-avatar" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan
-         https://kitt.lewagon.com/placeholder/users/gabriel-dehan
-         "> -->
-         <% if current_user.photo.blank? %>
-         <%= cl_image_tag "user-login-icon-14",  {class: "user-avatar-blnk"} %>
-         <% else %>
-         <%= cl_image_tag current_user.photo,  {class: "user-avatar"} %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <% @trips.each do |trip| %>
+      <div class="card">
+        <div class="avatar">
+          <% if trip.user.photo.blank? %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+          <% end %>
+          <%# if current_user.photo.blank? %>
+          <%#= cl_image_tag "user-login-icon-14",  {class: "user-avatar-blnk"} %>
+          <%# else %>
+          <%#= cl_image_tag current_user.photo,  {class: "user-avatar"} %>
 
-         <% end %>
-
+         <%# end %>
        </div>
        <div class="ride-info">
          <%= link_to trip_path(trip, query: @params) do %>
@@ -56,4 +57,3 @@
    </div>
    <% end %>
  </div>
-</div>
