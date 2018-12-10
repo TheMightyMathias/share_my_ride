@@ -6,7 +6,7 @@ class TripsController < ApplicationController
   def show
     @trips = Trip.find(params[:id])
   end
-  
+
   def search
     @trips = Trip.all.order('created_at DESC')
     if params[:query][:airport]
@@ -25,69 +25,52 @@ class TripsController < ApplicationController
       }
     end
 
-    destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
-
+    session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
     destination_marker = {
-      lng: destination_coordinates[1],
-      lat: destination_coordinates[0]
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
     }
-
-      @markers << destination_marker
-      session[:search] = params[:query]
+    session[:search] = params[:query]
   end
 
   def confirmation
     @trip = Trip.find(params["id"])
-    @ridemates = Ridemate.where(trip:@trip)
-    @mates = []
-    @ridemates.each do |ridemate|
-      @mates << ridemate.user
-    end
+    @ridemates = @trip.ridemates
+    @mates = @trip.trip_users
     @markers = []
     trip_marker = {
-        lng: @trip.longitude,
-        lat: @trip.latitude
+      lng: @trip.longitude,
+      lat: @trip.latitude
     }
-
     @markers << trip_marker
 
+    @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
 
-    # destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
-
-    # @destination_marker = {
-    #   lng: destination_coordinates[1],
-    #   lat: destination_coordinates[0]
-    # }
-
-    # @markers << @destination_marker
-    session[:search] = params[:query]
+    @user_marker = {
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
+    }
+    @markers << @user_marker
   end
 
   def show
-    @trip = Trip.find(params[:id])
-    @ridemates = Ridemate.where(trip:@trip)
-    @mates = []
-    @ridemates.each do |ridemate|
-    @mates << ridemate.user
-    end
-
+    @trip = Trip.find(params["id"])
+    @ridemates = @trip.ridemates
+    @mates = @trip.trip_users
     @markers = []
-    @trip_marker = {
-        lng: @trip.longitude,
-        lat: @trip.latitude
-      }
-
-      @markers << @trip_marker
-
-        destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
-
-    @destination_marker = {
-      lng: destination_coordinates[1],
-      lat: destination_coordinates[0]
+    trip_marker = {
+      lng: @trip.longitude,
+      lat: @trip.latitude
     }
+    @markers << trip_marker
 
-      @markers << @destination_marker
-      session[:search] = params[:query]
+    @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
+
+    @user_marker = {
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
+    }
+    @markers << @user_marker
   end
 
   def new
@@ -116,5 +99,4 @@ class TripsController < ApplicationController
   def search_params
     params.require(:query).permit(:destination, :airport, :terminal, :air_id, :longitude, :latitude)
   end
-
 end
