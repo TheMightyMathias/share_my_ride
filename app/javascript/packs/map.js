@@ -51,11 +51,20 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 }
 
 
-const addressInput = document.getElementById('query_destination');
+const addressInput = document.getElementById('trip_destination');
 
 if (addressInput) {
   const places = require('places.js');
   const placesAutocomplete = places({
     container: addressInput
+  });
+}
+
+const addressInput2 = document.getElementById('query_destination');
+
+if (addressInput2) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInput2
   });
 }

@@ -10,7 +10,7 @@
               <ul class="suggestions">
               </ul>
             <%= t.input :terminal, placeholder: "Choose your Terminal" %>
-            <%= t.input :destination, id: "trip_destination", label: "Destination", as: :string, placeholder: "Where are you going?", label_html: { class: 'label-form' } %>
+            <%= t.input :destination, id: "query_destination", label: "Destination", as: :string, placeholder: "Where are you going?", label_html: { class: 'label-form' } %>
             <%= t.input :time, as: :string,  required: false, input_html: {class: "datepicker", value: Time.now }, label_html: { class: 'label-date' } %>
             <%= t.button :submit, "Go", class: "btn-full home-btn" %>
             <% end %>
