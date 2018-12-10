@@ -36,7 +36,7 @@
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <h2 class="h2search">My Trips</h2>
         <% @trips.each do |trip| %>
-         <%= link_to confirmation_path(trip) do %>
+        <%= link_to confirmation_path(trip.id) do %>
         <div class="card">
 
           <div class="avatar">
@@ -49,7 +49,7 @@
 
           </div>
           <div class="ride-info">
-           <%= link_to trip_path(trip, query: @params) do %>
+
            <ul class="trip-list">
              <li id="terminal">Terminal <%= trip.terminal %></li>
              <li id="destination"><%= trip.destination %></li>
@@ -61,12 +61,8 @@
              </div>
 
              <div id='ride-sum'>
-
-
-
-               <% end %>
              </div>
-              <% end %>
+             <% end %>
            </div>
          </div>
        </div>
