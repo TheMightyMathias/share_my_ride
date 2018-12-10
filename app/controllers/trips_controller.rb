@@ -86,6 +86,10 @@ class TripsController < ApplicationController
     redirect_to confirmation_path(@trip)
   end
 
+  def chat
+    @trip = Trip.includes(messages: :user).find(params[:id])
+  end
+
   private
 
   def trip_params

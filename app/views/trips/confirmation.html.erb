@@ -3,6 +3,10 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <div class="text-center" style="text-align: center;">
+
+          <div>
+            <%= link_to "Chat", chat_path, class: "btn-full home-btn" %>
+          </div>
           <h2><strong>Meet your Ridemates at :</strong></h2>
           <h4>
             <%= @trip.airport.name %>
