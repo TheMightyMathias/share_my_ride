@@ -12,18 +12,19 @@ class TripsController < ApplicationController
     if params[:query][:airport]
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
-      @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC").where.not(user: current_user)
+      @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC")
+                   .where.not(user: current_user)
     end
+
     if params[:query][:terminal] && params[:query][:airport]
       @trips = @trips.where("terminal @@ '#{params[:query][:terminal]}'")
     end
-    # @terminals = @trips.map { |trip| trip.terminal }
-    @markers = @trips.map do |trip|
-      {
-        lng: trip.longitude,
-        lat: trip.latitude
-      }
+
+    @trips = @trips.select do |trip|
+      trip.ride_mates_limit > trip.ridemates.count
     end
+
+    trip_markers
 
     session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
     destination_marker = {
@@ -43,14 +44,8 @@ class TripsController < ApplicationController
       lat: @trip.latitude
     }
     @markers << trip_marker
-
     @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
-
-    @user_marker = {
-      lng: session[:user_coordinates][1],
-      lat: session[:user_coordinates][0]
-    }
-    @markers << @user_marker
+    user_markers
   end
 
   def show
@@ -66,11 +61,7 @@ class TripsController < ApplicationController
 
     @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
 
-    @user_marker = {
-      lng: session[:user_coordinates][1],
-      lat: session[:user_coordinates][0]
-    }
-    @markers << @user_marker
+    user_markers
   end
 
   def new
@@ -78,19 +69,36 @@ class TripsController < ApplicationController
     @trip.time = session[:search]["time"]
     @trip.terminal = session[:search]["terminal"]
     airport_name = session[:search]["airport"].split(",")[1].strip.upcase
-    @trip.airport_id = Airport.find_by(iata_code:airport_name).id
+    @trip.airport_id = Airport.find_by(iata_code: airport_name).id
     @trip.destination = session[:search]["destination"]
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    @trip.airport_id = Airport.where(name:params["trip"]["airport"]).ids.join.to_i
+    @trip.airport_id = Airport.where(name: params["trip"]["airport"]).ids.join.to_i
     @trip.save
     redirect_to confirmation_path(@trip)
   end
 
   private
+
+  def trip_markers
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+    end
+  end
+
+  def user_markers
+    @user_marker = {
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
+    }
+    @markers << @user_marker
+  end
 
   def trip_params
     params.require(:trip).permit(:terminal, :airport_id, :destination, :time, :user_id, :estimate)
