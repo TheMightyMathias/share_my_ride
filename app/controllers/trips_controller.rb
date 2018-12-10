@@ -1,7 +1,4 @@
 class TripsController < ApplicationController
-  def show
-    @trips = Trip.find(params[:id])
-  end
   def search
     @trips = Trip.all.order('created_at DESC')
     if params[:query][:airport]
@@ -28,20 +25,8 @@ class TripsController < ApplicationController
     }
 
       @markers << destination_marker
-      # @markers.last
       session[:search] = params[:query]
-  end #-> at the end of the action rails will render the template
-
-  def confirmation
-    @trips = Trip.where.not(latitude: nil, longitude: nil)
-    @markers = @trips.map do |trip|
-      {
-        lng: trip.longitude,
-        lat: trip.latitude
-      }
-    end
-    session[:search] = params[:query]
-  end #-> at the end of the action rails will render the template
+  end
 
   def confirmation
     @trip = Trip.find(params["id"])
@@ -50,14 +35,24 @@ class TripsController < ApplicationController
     @ridemates.each do |ridemate|
       @mates << ridemate.user
     end
+    @markers = []
+    trip_marker = {
+        lng: @trip.longitude,
+        lat: @trip.latitude
+    }
 
-    # @trips = Trip.where.not(latitude: nil, longitude: nil)
-    # @markers = @trips.map do |trip|
-    #   {
-    #     lng: trip.longitude,
-    #     lat: trip.latitude
-    #   }
-    # end
+    @markers << trip_marker
+
+
+    # destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
+
+    # @destination_marker = {
+    #   lng: destination_coordinates[1],
+    #   lat: destination_coordinates[0]
+    # }
+
+    # @markers << @destination_marker
+    session[:search] = params[:query]
   end
 
   def show
@@ -67,6 +62,24 @@ class TripsController < ApplicationController
     @ridemates.each do |ridemate|
     @mates << ridemate.user
     end
+
+    @markers = []
+    @trip_marker = {
+        lng: @trip.longitude,
+        lat: @trip.latitude
+      }
+
+      @markers << @trip_marker
+
+        destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
+
+    @destination_marker = {
+      lng: destination_coordinates[1],
+      lat: destination_coordinates[0]
+    }
+
+      @markers << @destination_marker
+      session[:search] = params[:query]
   end
 
   def new
