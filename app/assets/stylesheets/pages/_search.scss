@@ -13,12 +13,13 @@
 .card {
  display: flex;
  align-items: center;
- border: 1px solid rgba(220,224,244,0.4);
+ // border: 1px solid rgba(220,224,244,0.4);
  margin-bottom: 8px;
- box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
+ // box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
  // border-bottom: 1px solid rgba(220,224,244,0.4);
+ border-bottom: 1px solid #A535CF;
  color: white;
- background-color: rgba(0, 0, 0, 0.3);
+ // background-color: rgba(0, 0, 0, 0.3);
 }
 
 .card:last-child {
@@ -66,22 +67,22 @@
 }
 
 #terminal {
- font-size:11px;
+ font-size:20px;
  color: white;
 }
 
 #destination {
- font-size:12px;
+ font-size:16px;
  color: white;
 }
 
 #ride-date {
-font-size:10px;
+font-size:16px;
 color: white;
 }
 
 #ride-sum {
- font-size:11px;
+ font-size:16px;
  color: white;
  text-decoration: none;
  color: inherit;
