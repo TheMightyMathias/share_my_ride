@@ -9,6 +9,7 @@
 					<%= t.input :terminal %>
 					<%= t.input :destination, id: "trip_destination", label: "Destination", as: :string, placeholder: "Where are you going?", label_html: { class: 'label-form' } %>
           <%= t.hidden_field :airport, value: @trip.airport.name %>
+          <%= t.input :ride_mates_limit, placeholder: "3 or 6" %>
           <%= t.input :estimate, placeholder: "What is the cost estimate for the trip?", label_html: { class: 'label-form' } %>
 					<%= t.input :time, as: :string,  required: false, input_html: {class: "datepicker"} %>
 					<%= t.button :submit, "Create", class: "btn-full btn-sm home-btm" %>

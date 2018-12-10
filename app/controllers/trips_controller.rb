@@ -6,88 +6,75 @@ class TripsController < ApplicationController
   def show
     @trips = Trip.find(params[:id])
   end
-  
+
   def search
     @trips = Trip.all.order('created_at DESC')
     if params[:query][:airport]
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
-      @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC").where.not(user: current_user)
+      @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC")
+                   .where.not(user: current_user)
     end
+
     if params[:query][:terminal] && params[:query][:airport]
       @trips = @trips.where("terminal @@ '#{params[:query][:terminal]}'")
     end
-    # @terminals = @trips.map { |trip| trip.terminal }
-    @markers = @trips.map do |trip|
+
+    @trips = @trips.select do |trip|
+      trip.ride_mates_limit > trip.ridemates.count
+    end
+
+    @trips = @trips.select do |trip|
+      trip.trip_users.exclude?(current_user)
+    end
+
+     @markers = @trips.map do |trip|
       {
         lng: trip.longitude,
         lat: trip.latitude
       }
     end
 
-    destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
+    session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
 
     destination_marker = {
-      lng: destination_coordinates[1],
-      lat: destination_coordinates[0]
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
     }
 
-      @markers << destination_marker
-      session[:search] = params[:query]
+    @markers << destination_marker
+
+    session[:search] = params[:query]
   end
 
   def confirmation
     @trip = Trip.find(params["id"])
-    @ridemates = Ridemate.where(trip:@trip)
-    @mates = []
-    @ridemates.each do |ridemate|
-      @mates << ridemate.user
-    end
+    @ridemates = @trip.ridemates
+    @mates = @trip.trip_users
     @markers = []
     trip_marker = {
-        lng: @trip.longitude,
-        lat: @trip.latitude
+      lng: @trip.longitude,
+      lat: @trip.latitude
     }
-
     @markers << trip_marker
-
-
-    # destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
-
-    # @destination_marker = {
-    #   lng: destination_coordinates[1],
-    #   lat: destination_coordinates[0]
-    # }
-
-    # @markers << @destination_marker
-    session[:search] = params[:query]
+    @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
+    user_markers
   end
 
   def show
-    @trip = Trip.find(params[:id])
-    @ridemates = Ridemate.where(trip:@trip)
-    @mates = []
-    @ridemates.each do |ridemate|
-    @mates << ridemate.user
-    end
-
+    @trip = Trip.find(params["id"])
+    @ridemates = @trip.ridemates
+    @mates = @trip.trip_users
     @markers = []
-    @trip_marker = {
-        lng: @trip.longitude,
-        lat: @trip.latitude
-      }
-
-      @markers << @trip_marker
-
-        destination_coordinates = Geocoder.search(params[:query]["destination"]).first.coordinates
-
-    @destination_marker = {
-      lng: destination_coordinates[1],
-      lat: destination_coordinates[0]
+    trip_marker = {
+      lng: @trip.longitude,
+      lat: @trip.latitude
     }
+    @markers << trip_marker
 
-      @markers << @destination_marker
-      session[:search] = params[:query]
+    @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
+
+    user_markers
   end
 
   def new
@@ -95,19 +82,40 @@ class TripsController < ApplicationController
     @trip.time = session[:search]["time"]
     @trip.terminal = session[:search]["terminal"]
     airport_name = session[:search]["airport"].split(",")[1].strip.upcase
-    @trip.airport_id = Airport.find_by(iata_code:airport_name).id
+    @trip.airport_id = Airport.find_by(iata_code: airport_name).id
     @trip.destination = session[:search]["destination"]
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    @trip.airport_id = Airport.where(name:params["trip"]["airport"]).ids.join.to_i
+    @trip.airport_id = Airport.where(name: params["trip"]["airport"]).ids.join.to_i
     @trip.save
     redirect_to confirmation_path(@trip)
   end
 
+  def chat
+    @trip = Trip.includes(messages: :user).find(params[:id])
+  end
+
   private
+
+  def trip_markers
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+    end
+  end
+
+  def user_markers
+    @user_marker = {
+      lng: session[:user_coordinates][1],
+      lat: session[:user_coordinates][0]
+    }
+    @markers << @user_marker
+  end
 
   def trip_params
     params.require(:trip).permit(:terminal, :airport_id, :destination, :time, :user_id, :estimate)
@@ -116,5 +124,4 @@ class TripsController < ApplicationController
   def search_params
     params.require(:query).permit(:destination, :airport, :terminal, :air_id, :longitude, :latitude)
   end
-
 end
