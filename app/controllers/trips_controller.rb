@@ -24,13 +24,26 @@ class TripsController < ApplicationController
       trip.ride_mates_limit > trip.ridemates.count
     end
 
-    trip_markers
+    @trips = @trips.select do |trip|
+      trip.trip_users.exclude?(current_user)
+    end
+
+     @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+    end
 
     session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
+
     destination_marker = {
       lng: session[:user_coordinates][1],
       lat: session[:user_coordinates][0]
     }
+
+    @markers << destination_marker
+
     session[:search] = params[:query]
   end
 
