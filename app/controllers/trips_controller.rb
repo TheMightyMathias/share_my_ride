@@ -1,7 +1,13 @@
 class TripsController < ApplicationController
+
+  def all
+    @trips = Trip.all
+  end
+
   def show
     @trips = Trip.find(params[:id])
   end
+
   def search
     @trips = Trip.all.order('created_at DESC')
     if params[:query][:airport]
