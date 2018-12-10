@@ -4,30 +4,73 @@
 
       <!-- SIDEBAR USERPIC -->
       <div class="profile-userpic">
-      <% if @user.photo.blank? %>
-      <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png' class="img-responsive" ">
-      <% else %>
-      <%= cl_image_tag @user.photo, class: "img-responsive" %>
-      <% end %>
-      <div class="profile-info">
-        <div class="profile-usertitle">
-          <div class="profile-usertitle-name">
-            <%= @user.first_name %>
+        <% if @user.photo.blank? %>
+        <img src='https://www.freeiconspng.com/uploads/user-login-icon-14.png' class="img-responsive" ">
+        <% else %>
+        <%= cl_image_tag @user.photo, class: "img-responsive" %>
+        <% end %>
+        <div class="profile-info">
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+              <%= @user.first_name %>
 
+            </div>
+            <div class="profile-usertitle-job">
+              Email : <%= @user.email %><br>
+            </div>
           </div>
-          <div class="profile-usertitle-job">
-            Email : <%= @user.email %><br>
+          <div class="profile-userbuttons">
+            <%= link_to edit_user_registration_path(current_user) do %>
+            <i class="btn-border"> Edit Profile</i>
+            <% end %>
           </div>
-        </div>
-        <div class="profile-userbuttons">
-          <%= link_to edit_user_registration_path(current_user) do %>
-          <i class="btn-border"> Edit Profile</i>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<br>
-<br>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <h2 class="h2search">My Trips</h2>
+        <% @trips.each do |trip| %>
+         <%= link_to confirmation_path(trip) do %>
+        <div class="card">
+
+          <div class="avatar">
+
+            <% if trip.user.photo.blank? %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+            <% end %>
+
+          </div>
+          <div class="ride-info">
+           <%= link_to trip_path(trip, query: @params) do %>
+           <ul class="trip-list">
+             <li id="terminal">Terminal <%= trip.terminal %></li>
+             <li id="destination"><%= trip.destination %></li>
+           </ul>
+           <div class="ride-footer">
+             <div id="ride-date">
+               <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
+               <p>Ride Mates: <%= trip.ride_mates_limit %></p>
+             </div>
+
+             <div id='ride-sum'>
+
+
+
+               <% end %>
+             </div>
+              <% end %>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </div>
+   </div>
+
