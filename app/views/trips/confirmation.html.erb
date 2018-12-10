@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <div style="text-align: left;">
+        <div class="text-center" style="text-align: center;">
           <h2><strong>Meet your Ridemates at :</strong></h2>
           <h4>
             <%= @trip.airport.name %>
@@ -12,7 +12,7 @@
         </div>
         <% t =  @trip.time - Time.now %>
         <% m = t/60 %>
-        <div style="color: white;"><strong>Trip leaving in approx: </strong>
+        <div style="color: white; text-align: center;"><strong>Trip leaving in approx: </strong>
         <% if m > 1440 %>
           <% d = m/1440 %>
         <%= d.round %> days
@@ -22,10 +22,10 @@
           <% end %>
         </div>
 
-        <% if m < 15 %>
-        <div style="color: white; font-family: sans-serif;"><strong>Hurry! Trip leaving soon!</strong></div>
+        <% if m < 75 %>
+        <div style="color: white; font-family: sans-serif; text-align: center;"><strong>Hurry! Trip leaving soon!</strong></div><br>
         <% else %>
-        <div style="color: white; font-family: sans-serif;"><strong>Plenty of time left before trip. Get some coffee.</strong></div><br>
+        <div style="color: white; font-family: sans-serif;"><strong>Plenty of time left before your trip. Get some coffee.</strong></div><br>
         <% end %>
         <!-- Card for the trip.user -->
       <div class="mate-card">
@@ -52,7 +52,6 @@
         <!-- </div> -->
         <!-- Cards for ridemates -->
         <%  @mates.each do |mate| %>
-          <div class="card">
             <div class="avatar">
               <% if mate.photo.blank? %>
                 <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
@@ -60,7 +59,6 @@
                 <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
               <% end %>
             </div>
-          </div>
          <!--  <div class="ride-info">
               <ul class="trip-list">
                 <li id="terminal">Username: <%= mate.username %></li>
@@ -75,7 +73,7 @@
             </div> -->
           <!-- </div> -->
         <% end  %>
-        </div>
+      </div>
       </div>
     </div>
   </div><br>
