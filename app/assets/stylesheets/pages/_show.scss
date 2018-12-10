@@ -9,12 +9,13 @@
 .card {
   display: flex;
    align-items: center;
-   border: 1px solid rgba(220,224,244,0.4);
+   // border: 1px solid rgba(220,224,244,0.4);
    margin-bottom: 8px;
-   box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
+   // box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
    // border-bottom: 1px solid rgba(220,224,244,0.4);
+   border-bottom: 1px solid #A535CF;
    color: white;
-   background-color: rgba(0, 0, 0, 0.3);
+   // background-color: rgba(0, 0, 0, 0.3);
 }
 
 .trip-details {
@@ -23,7 +24,7 @@
    ul {
    list-style: none;
    padding-left: 0;
-   font-size: 13px;
+   font-size:15px;
   }
 }
 .card:last-child {
@@ -48,7 +49,7 @@
   ul li{
    list-style: none;
    padding-left: 0;
-   font-size: 12px;
+   font-size: 15px;
    margin: 12px 0;
   }
 

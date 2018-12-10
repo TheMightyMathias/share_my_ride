@@ -38,9 +38,10 @@
              <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
            </div>
            <div id='ride-sum'>
-             <p>Ride Mates: <%= trip.ride_mates_limit %></p>
-             <% end %>
+             Ride Mates Limit: <%= trip.ride_mates_limit %>
+             Currently <%= trip.ridemates.count + 1 %> mates
            </div>
+          <% end %>
          </div>
        </div>
      </div>

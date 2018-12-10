@@ -33,7 +33,7 @@
     </div>
 
 
-  <div class="card">
+  <div class="card style="border-bottom:none">
     <%  @mates.each do |mate| %>
         <div class="avatar">
         <% if mate.photo.blank? %>
@@ -52,3 +52,11 @@
     </div>
   </div>
 </div>
+<br>
+<div
+  id="map"
+  style="width:350px; margin:0 auto;
+  height: 200px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>

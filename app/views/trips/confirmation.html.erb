@@ -31,8 +31,7 @@
         <% else %>
         <div style="color: white; font-family: sans-serif;"><strong>Plenty of time left before your trip. Get some coffee.</strong></div><br>
         <% end %>
-
-        <div style="text-align: center;"><strong>Trip cost estimate: $</strong><%= @trip.estimate %></div>
+        <div style="text-align: center;"><strong>Your current trip cost estimate is </strong> $<%= @total_estimate %></div>
         <!-- Card for the trip.user -->
       <div class="mate-card">
         <div class="card">
