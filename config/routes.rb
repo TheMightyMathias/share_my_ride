@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'trips/:id/confirmation', to: "trips#confirmation", as: :confirmation
   get 'trips/:id/chat', to: "trips#chat", as: :chat
   post 'trips/:trip_id/chat/messages', to: 'messages#create', as: :trip_messages
+
+  mount ActionCable.server => "/cable"
 end

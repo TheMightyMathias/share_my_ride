@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
 
 gem "geocoder"
 gem 'cloudinary', '~> 1.9.1'
