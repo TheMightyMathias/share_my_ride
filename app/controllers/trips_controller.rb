@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_action :set_trip, only: [:destroy]
+
   def all
     @trips = Trip.all
   end
@@ -13,7 +15,7 @@ class TripsController < ApplicationController
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
       @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC")
-                   .where.not(user: current_user)
+      .where.not(user: current_user)
     end
 
     if params[:query][:terminal] && params[:query][:airport]
@@ -28,7 +30,7 @@ class TripsController < ApplicationController
       trip.trip_users.exclude?(current_user)
     end
 
-     @markers = @trips.map do |trip|
+    @markers = @trips.map do |trip|
       {
         lng: trip.longitude,
         lat: trip.latitude
@@ -98,6 +100,12 @@ class TripsController < ApplicationController
     @trip = Trip.includes(messages: :user).find(params[:id])
   end
 
+  def destroy
+    @trip.ridemates.destroy
+    @trip.destroy
+    redirect_to profiles_path
+  end
+
   private
 
   def trip_markers
@@ -123,5 +131,9 @@ class TripsController < ApplicationController
 
   def search_params
     params.require(:query).permit(:destination, :airport, :terminal, :air_id, :longitude, :latitude)
+  end
+
+  def set_trip
+    @trip = Trip.find(params[:id])
   end
 end

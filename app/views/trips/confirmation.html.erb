@@ -1,46 +1,46 @@
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <div class="text-center" style="text-align: center;">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="text-center" style="text-align: center;">
 
-          <div>
-            <%= link_to "Chat", chat_path, class: "btn-full home-btn" %>
-          </div>
-          <h2><strong>Meet your Ridemates at :</strong></h2>
-          <h4>
-            <%= @trip.airport.name %>
-            <br>
-            Terminal : <%= @trip.terminal %>
-          </h4><br>
+        <div>
+          <%= link_to "Chat", chat_path, class: "btn-full home-btn" %>
         </div>
-        <% t =  @trip.time - Time.now %>
-        <% m = t/60 %>
-        <div style="color: white; text-align: center;"><strong>Trip leaving in approx: </strong>
+        <h2><strong>Meet your Ridemates at :</strong></h2>
+        <h4>
+          <%= @trip.airport.name %>
+          <br>
+          Terminal : <%= @trip.terminal %>
+        </h4><br>
+      </div>
+      <% t =  @trip.time - Time.now %>
+      <% m = t/60 %>
+      <div style="color: white; text-align: center;"><strong>Trip leaving in approx: </strong>
         <% if m > 1440 %>
-          <% d = m/1440 %>
+        <% d = m/1440 %>
         <%= d.round %> days
-          <% else %>
-          <% d = m %>
-          <%= m.round %> minutes
-          <% end %>
-        </div>
-
-        <% if m < 75 %>
-        <div style="color: white; font-family: sans-serif; text-align: center;"><strong>Hurry! Trip leaving soon!</strong></div><br>
         <% else %>
-        <div style="color: white; font-family: sans-serif;"><strong>Plenty of time left before your trip. Get some coffee.</strong></div><br>
+        <% d = m %>
+        <%= m.round %> minutes
         <% end %>
-        <div style="text-align: center;"><strong>Your current trip cost estimate is </strong> $<%= @total_estimate %></div>
-        <!-- Card for the trip.user -->
+      </div>
+
+      <% if m < 75 %>
+      <div style="color: white; font-family: sans-serif; text-align: center;"><strong>Hurry! Trip leaving soon!</strong></div><br>
+      <% else %>
+      <div style="color: white; font-family: sans-serif;"><strong>Plenty of time left before your trip. Get some coffee.</strong></div><br>
+      <% end %>
+      <div style="text-align: center;"><strong>Your current trip cost estimate is </strong> $<%= @total_estimate %></div>
+      <!-- Card for the trip.user -->
       <div class="mate-card">
         <div class="card">
           <div class="avatar">
             <% if @trip.user.photo.blank? %>
-                <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-              <% else %>
-                <%= cl_image_tag @trip.user.photo, {class: "user-avatar"} %>
-              <% end %>
+            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+            <%= cl_image_tag @trip.user.photo, {class: "user-avatar"} %>
+            <% end %>
           </div>
         <!-- <div class="ride-info">
           <ul class="trip-list">
@@ -53,17 +53,17 @@
             <div id="ride-date">
               Could put the score when reviews implemented -->
          <!--    </div>
-          </div> -->
-        <!-- </div> -->
-        <!-- Cards for ridemates -->
-        <%  @mates.each do |mate| %>
-            <div class="avatar">
-              <% if mate.photo.blank? %>
-                <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-              <% else %>
-                <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
-              <% end %>
-            </div>
+         </div> -->
+         <!-- </div> -->
+         <!-- Cards for ridemates -->
+         <%  @mates.each do |mate| %>
+         <div class="avatar">
+          <% if mate.photo.blank? %>
+          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <% else %>
+          <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
+          <% end %>
+        </div>
          <!--  <div class="ride-info">
               <ul class="trip-list">
                 <li id="terminal">Username: <%= mate.username %></li>
@@ -73,23 +73,26 @@
               </ul>
             <div class="ride-footer">
               <div id="ride-date">
-                     Could put the score when reviews implemented -->
+               Could put the score when reviews implemented -->
            <!--    </div>
-            </div> -->
-          <!-- </div> -->
-        <% end  %>
-      </div>
-      </div>
-    </div>
-  </div><br>
-  <div class="card-meet">
-          <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
-          <h4> <u>Drop off</u> : <%= @trip.destination %></h4>
-        </div>
-<div
+           </div> -->
+           <!-- </div> -->
+           <% end  %>
+         </div>
+       </div>
+     </div>
+   </div><br>
+   <div class="card-meet">
+    <h4> <u>Meet Up Time</u> : <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></h4>
+    <h4> <u>Drop off</u> : <%= @trip.destination %></h4>
+  </div>
+  <div
   id="map"
   style="width:350px; margin:0 auto;
   height: 200px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
+
+  <p><%= link_to "Delete Trip", trip_path(@trip), data: { confirm: "Are you sure?" },method: :delete %></p>
+
