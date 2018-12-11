@@ -271,8 +271,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   letter_opener
   listen (~> 3.0.5)
-  momentjs-rails
   meta_request
+  momentjs-rails
   pg (~> 0.21)
   postmark-rails
   pry-byebug
