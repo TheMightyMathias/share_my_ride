@@ -73,7 +73,7 @@ class TripsController < ApplicationController
     }
     @markers << trip_marker
     @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
-    user_markers
+    user_markers_confirmed
   end
 
   def show
@@ -131,11 +131,16 @@ class TripsController < ApplicationController
   end
 
   def user_markers
+    @destination = Ridemate.where(trip: @trip).where(user: current_user)
     @user_marker = {
-      lng: session[:user_coordinates][1],
-      lat: session[:user_coordinates][0]
+      lng: @destination.longitude,
+      lat: @destination.latitude,
     }
     @markers << @user_marker
+  end
+
+  def user_markers_confirmed
+
   end
 
   def trip_params
