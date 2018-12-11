@@ -1,4 +1,12 @@
-<h3>Hi <%= @trip.user.first_name %>,</h3>
+<%# if @owner %>
+<%#= render 'owner-email' %>
+<% #if @user %>
+<%#= render 'user-email' %>
+
+
+
+
+<h3>Hi <%= @user.first_name %>,</h3>
 
   <p>You have booked the following trip with ShareMyRide. Please find the confirmation details below:</p>
 
