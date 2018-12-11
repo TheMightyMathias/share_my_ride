@@ -20,5 +20,10 @@ module ShareMyRide
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => "f6f24aeb-fd5f-41fe-804d-714690744fa4" }
+
+    # config.action_mailer.delivery_method = :postmark
+    # config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
   end
 end
