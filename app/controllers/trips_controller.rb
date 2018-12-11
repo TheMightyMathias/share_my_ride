@@ -11,11 +11,18 @@ class TripsController < ApplicationController
 
   def search
     @trips = Trip.all.order('created_at DESC')
-    if params[:query][:airport]
+    @airports = Airport.all
+    @airports = @airports.map do |airport|
+      airport.name
+    end
+    if @airports.include?(params[:query][:airport][0...-5].titleize) || @airports.include?(params[:query][:airport][0...-5])
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
       @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("created_at DESC")
       .where.not(user: current_user)
+    else
+      flash[:alert] = "You need to select a valid airport from the list, buddy."
+      redirect_to request.referer
     end
 
     if params[:query][:terminal] && params[:query][:airport]
@@ -30,22 +37,27 @@ class TripsController < ApplicationController
       trip.trip_users.exclude?(current_user)
     end
 
-    session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
+    @markers = @trips.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
+    end
 
-    destination_marker = {
-      lng: session[:user_coordinates][1],
-      lat: session[:user_coordinates][0]
-    }
+    if Geocoder.search(params[:query]["destination"]).first
 
-     @markers = @trips.map do |trip|
-       {
-          lng: trip.longitude,
-          lat: trip.latitude
-        }
-  end
+      session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
 
+      destination_marker = {
+        lng: session[:user_coordinates][1],
+        lat: session[:user_coordinates][0]
+      }
 
-    @markers << destination_marker
+      @markers << destination_marker
+
+    else
+      @message = "Unfortunatly your search didn't bring any results. Here are all trips leaving from your airport"
+    end
 
     session[:search] = params[:query]
   end
