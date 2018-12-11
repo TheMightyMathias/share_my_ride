@@ -448,61 +448,97 @@ puts "Creating RideMate"
 Ridemate.create({
   user_id: 4,
   trip_id: 1,
+  destination: 'Jl.raya singapadu, no.888, br.apauan, des.singapadu, kec.sukawati, Singapadu, Sukawati, Kabupaten Gianyar, Bali 80582, Indonesia',
+  longitude: -8.5918844057982 ,
+  latitude: 115.26649475097656,
 })
 
 Ridemate.create({
   user_id: 5,
   trip_id: 1,
+  destination: 'Renon, Denpasar Selatan, Panjer, Denpasar Sel., Kota Denpasar, Bali 80234, Indonesia',
+  longitude: -8.66995440565646,
+  latitude: 115.23387908935547,
 })
 
 Ridemate.create({
   user_id: 6,
   trip_id: 2,
+  destination: 'Jl. Pantai Legian, Legian, Kuta, Kabupaten Badung, Bali, Indonesia',
+  longitude: -8.697784143504906,
+  latitude: 115.16178131103516,
 })
 
 Ridemate.create({
   user_id: 10,
   trip_id: 4,
+  destination: '11 Collins St, Melbourne VIC 3004, Australia',
+  longitude: -37.813784667931245,
+  latitude: 144.9734401702881,
 })
 
 Ridemate.create({
   user_id: 11,
   trip_id: 4,
+  destination: '200 St Kilda Rd, Southbank VIC 3006, Australia',
+  longitude: -37.82253123860033,
+  latitude: 144.96889114379883,
 })
 
 Ridemate.create({
   user_id: 12,
   trip_id: 5,
+  destination: 'Bay Trail, Port Melbourne VIC 3207, Australia',
+  longitude: -37.84097022350016,
+  latitude: 144.9269199371338,
 })
 
 Ridemate.create({
   user_id: 16,
   trip_id: 7,
+  destination: 'State Park Cir, Panama City, FL 32408, USA',
+  longitude: 30.133399313136763,
+  latitude: -85.73850631713867,
 })
 
 Ridemate.create({
   user_id: 17,
   trip_id: 7,
+  destination: '9323 Front Beach Rd, Panama City Beach, FL 32407, USA',
+  longitude: 30.179115283839486,
+  latitude: -85.79412460327148,
 })
 
 Ridemate.create({
   user_id: 18,
   trip_id: 8,
+  destination: '2205 E 5th St, Panama City, FL 32401, USA',
+  longitude: 30.15703919399514,
+  latitude: -85.63025236129761,
 })
 
 
 Ridemate.create({
   user_id: 22,
   trip_id: 10,
+  destination: '14 Rue Bonaparte, 75006 Paris, France',
+  longitude: 48.85686581838981,
+  latitude: 2.3337364196777344,
 })
 
 Ridemate.create({
   user_id: 23,
   trip_id: 10,
+  destination: 'Pont Alexandre III, Pont Alexandre III, 75008 Paris, France',
+  longitude: 48.863924276481605,
+  latitude: 2.3134803771972656,
 })
 
 Ridemate.create({
   user_id: 24,
   trip_id: 11,
+  destination: 'Le Panthéon, 75005 Paris, France',
+  longitude: 48.846248023032196,
+  latitude: 2.346353530883789,
 })
 
