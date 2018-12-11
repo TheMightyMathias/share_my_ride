@@ -23,5 +23,4 @@ class RidematesController < ApplicationController
   # def send_trip_confirm
   #   UserMailer.tripconfirm(self).deliver_now
   # end
-
 end
