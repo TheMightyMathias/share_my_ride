@@ -6,6 +6,7 @@
   border: 1px solid #BF3B91;
   // border-top: none;
   max-height: calc(100vh - 70px - 45px - 61px - 40px);
+  min-height: 30vh;
   overflow: scroll;
 }
 

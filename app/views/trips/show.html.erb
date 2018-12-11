@@ -2,18 +2,15 @@
     <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="card show-user">
-      <div class="avatar">
         <% if @trip.user.photo.blank? %>
-          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+          <img id="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
           <% else %>
-          <%= cl_image_tag @trip.user.photo, {class: "user-avatar"} %>
+          <%= cl_image_tag @trip.user.photo, {id: "avatar-confirmation"} %>
           <% end %>
-      </div>
       <div class="ride-info-show">
         <ul class="trip-list">
           <li id="terminal"><b>Trip created by: </b><%= @trip.user.first_name %></li>
-
-          <li> Going to the city for the weekend, happy to meet locals or tourists to hang out with</li>
+          <li><b>Share My Ride score: </b> REVIEWS</li>
         </ul>
         <div class="ride-footer">
           <div id="ride-date">
@@ -22,6 +19,31 @@
       </div>
     </div>
   </div>
+
+
+  <% if @mates.blank? %>
+  <div class="card">
+    <h6 style="margin-left: 10px;">There are no other riders with <%= @trip.user.first_name %> yet</h6>
+  </div>
+  <% else %>
+  <h6>Other Ridemate(s):</h6>
+  <div class="card" id="mates-card">
+    <%  @mates.each do |mate| %>
+      <div id="ridemate-confirmation">
+            <div >
+              <% if mate.photo.blank? %>
+              <img id="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+              <% else %>
+              <%= cl_image_tag mate.photo, {id: "avatar-confirmation"} %>
+              <% end %>
+            </div>
+            <div id="user-confirmation" style="font-size: 15px;">
+              <%= mate.first_name %>
+            </div>
+          </div>
+        <% end  %>
+  </div>
+  <% end %>
         <!-- trip details card -->
     <div class="card trip-details">
       <ul>
@@ -33,25 +55,7 @@
       </ul>
     </div>
 
-  <% if @mates.blank? %>
-  <div class="card">
-    <h6 style="margin-left: 10px;">There are no other riders with <%= @trip.user.first_name %> yet</h6>
-  </div>
-  <% else %>
-  <h6>Other Ridemate(s):</h6>
-  <div class="card" id="ride-mates">
-    <%  @mates.each do |mate| %>
-        <div class="avatar" id="mates-avatar">
-        <% if mate.photo.blank? %>
-          <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-          <% else %>
-          <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
-          <% end %>
-        <p><%= mate.first_name %></p>
-        </div>
-      <% end %>
-  </div>
-  <% end %>
+
 
      <h4 class="h4show" style="color: white; text-align: center;">Join <%= @trip.user.first_name %>'s trip and get in touch with your ridemates</h4>
      <%= link_to "JOIN", trip_ridemates_path(@trip.id),
@@ -59,6 +63,7 @@
       data: { confirm: "Are you sure?" }, class: "btn-full home-btn" %>
     </div>
   </div>
+</div>
 </div>
 <br>
 <div
