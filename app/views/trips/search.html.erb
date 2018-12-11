@@ -1,43 +1,39 @@
 <h2 class="h2search text-center">Search Results</h2>
 <h4 class="h4search text-center"><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%> Terminal: <%= params[:query][:terminal] %></h4>
-<div class="box">
   <div
   id="map"
-  style="width:300px; margin:0 auto;
+  style="margin:0 auto; width: cover;
   height: 200px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div><br>
-</div>
 
 <div class="container">
-
+<script src="moment.js"></script>
   <div class="row">
     <% @trips.each do |trip| %>
 
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <%= link_to trip_path(trip, query: @params) do %>
-          <div class="trip-card">
-            <div class="card">
-              <div class="avatar">
-                <% if trip.user.photo.blank? %>
-                  <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-                <% else %>
-                  <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
-                <% end %>
+          <div class="card trip-card">
+            <div class="avatar">
+              <% if trip.user.photo.blank? %>
+                <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+              <% else %>
+                <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+              <% end %>
+            </div>
+            <div class="ride-info">
+              <div style="margin-left: 10px;"><% if trip.destination.split(",").last.include?("United States of America") %><strong><%= trip.destination.split(",")[0...-1].join(",") %></strong><% else %> <strong><%= trip.destination %></strong><% end %>
               </div>
-              <div class="ride-info">
-                <div style="margin-left: 10px;"><% if trip.destination.split(",").last.include?("United States of America") %><strong><%= trip.destination.split(",")[0...-1].join(",") %></strong><% else %> <strong><%= trip.destination %></strong><% end %>
-                </div>
-                <div class="ride-details">
-                  <p><%= trip.time.strftime("%b %e at %l:%M %p") %></p>
-                  <div class="ride-footer">
-                    <strong>RideMates <%= trip.ridemates.count %> / <%= trip.ride_mates_limit %></strong>
-                    <i class="fas fa-dollar-sign"> $<%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %></i>
-                    <% current_location = Geokit::LatLng.new(trip.longitude, trip.latitude) %>
-                    <% destination = @markers.last[:lng], @markers.last[:lat] %>
-                    <i class="fas fa-walking"> <%= current_location.distance_to(destination).round(2) %> miles</i>
-                  </div>
+              <div class="ride-details">
+                <p><%= trip.time.strftime("%b %e at %l:%M %p") %></p>
+                <div class="ride-footer">
+                  <strong>RideMates</strong> <%= trip.ridemates.count %> / <%= trip.ride_mates_limit %>
+                  <i class="fas fa-dollar-sign"></i> <%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %>
+                  <% current_location = Geokit::LatLng.new(trip.longitude, trip.latitude) %>
+                  <% destination = @markers.last[:lng], @markers.last[:lat] %>
+                  <i class="fas fa-walking"></i> <%= current_location.distance_to(destination).round(2) %> miles
                 </div>
               </div>
             </div>

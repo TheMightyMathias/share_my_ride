@@ -11,8 +11,8 @@
 }
 
 .trip-card {
-  display: flex;
-  justify-content: space-between;
+ align-items: flex-start;
+
 }
 
 .card:last-child {
@@ -31,6 +31,7 @@
 .ride-info {
  // align-items: center;
  // padding: 20px;
+ width: 80%;
  text-decoration:none;
  color: white;
  margin-left:10px;
