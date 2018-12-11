@@ -33,9 +33,13 @@
       </ul>
     </div>
 
+  <% if @mates.blank? %>
+  <div class="card">
+    <h6 style="margin-left: 10px;">There are no other riders with <%= @trip.user.first_name %> yet</h6>
+  </div>
+  <% else %>
   <h6>Other Ridemate(s):</h6>
   <div class="card" id="ride-mates">
-
     <%  @mates.each do |mate| %>
         <div class="avatar" id="mates-avatar">
         <% if mate.photo.blank? %>
@@ -47,6 +51,7 @@
         </div>
       <% end %>
   </div>
+  <% end %>
 
      <h4 class="h4show" style="color: white; text-align: center;">Join <%= @trip.user.first_name %>'s trip and get in touch with your ridemates</h4>
      <%= link_to "JOIN", trip_ridemates_path(@trip.id),
