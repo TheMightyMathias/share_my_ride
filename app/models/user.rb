@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :photo, PhotoUploader
   has_many :trips
-  has_many :ride_mates
+  has_many :ridemates
   has_many :messages, dependent: :destroy
+  has_many :ridemate_trips, through: :ridemates, source: :trip, dependent: :destroy
 end
+
+

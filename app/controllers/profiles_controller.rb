@@ -6,18 +6,9 @@ class ProfilesController < ApplicationController
   end
 
   def show
-
-    # @ridemates = Ridemate.all
-
-    set_user
-    # @trips = current_user.trips
-    # @trips = @trips.where(user: current_user)
-    @trips = Trip.all
-    # @trips = @trip.select do |trip|
-    #   trip.trip_users.include?(set_user)
-    # end
+    @user_trips = current_user.trips
+    @ridemate_trips = current_user.ridemate_trips
   end
-
 
   def trips
     @trips = user.trips

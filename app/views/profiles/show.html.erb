@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <h2 class="h2search">My Trips</h2>
-        <% @trips.each do |trip| %>
+        <% @user_trips.each do |trip| %>
         <%= link_to confirmation_path(trip.id) do %>
         <div class="card">
 
@@ -68,5 +68,43 @@
        </div>
        <% end %>
      </div>
-   </div>
+     </div
 
+     <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <h2 class="h2search">Joined Trips</h2>
+          <% @ridemate_trips.each do |trip| %>
+          <%= link_to confirmation_path(trip.id) do %>
+          <div class="card">
+
+            <div class="avatar">
+
+              <% if trip.user.photo.blank? %>
+              <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+              <% else %>
+              <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+              <% end %>
+
+            </div>
+            <div class="ride-info">
+
+             <ul class="trip-list">
+               <li id="terminal">Terminal <%= trip.terminal %></li>
+               <li id="destination"><%= trip.destination %></li>
+             </ul>
+             <div class="ride-footer">
+               <div id="ride-date">
+                 <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
+                 <p>Ride Mates: <%= trip.ride_mates_limit %></p>
+               </div>
+
+               <div id='ride-sum'>
+               </div>
+               <% end %>
+             </div>
+           </div>
+         </div>
+         <% end %>
+       </div>
+     </div>
