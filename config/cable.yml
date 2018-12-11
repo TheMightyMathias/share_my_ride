@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV['REDISCLOUD_URL'] %>
+  url: <%= ENV['redis://rediscloud:dzD18EVWMGYhgNytoxJq0fV75PxRzmFJ@redis-12702.c78.eu-west-1-2.ec2.cloud.redislabs.com:12702'] %>
   channel_prefix: share_my_ride_production
