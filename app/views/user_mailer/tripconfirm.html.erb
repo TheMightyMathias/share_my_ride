@@ -1,0 +1,17 @@
+<h3>Hi <%= @trip.user.first_name %>,</h3>
+
+  <p>You have booked the following trip with ShareMyRide. Please find the confirmation details below:</p>
+
+  <ul>
+      <li>Terminal: <%= @trip.terminal %></li>
+      <li>Meet Up Time: <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+      <li>To: <%= @trip.destination %></li>
+  </ul>
+
+<p>Thank you for using ShareMyRide, we hope you have a safe and pleasant journey!</p>
+<br>
+<p>Cheers,</p>
+<P>The ShareMyRide Team</P>
+<p>www.sharemyride.tech</p>
+<p>Contact us: admin@sharemyride.tech</p>
+
