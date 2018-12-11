@@ -7,7 +7,7 @@ class CreateTrips < ActiveRecord::Migration[5.2]
       t.float :longitude
       t.datetime :time
       t.references :user, foreign_key: true
-      t.integer :ride_mates_limit
+      t.integer :ride_mates_limit, default: 3
 
       t.timestamps
     end

@@ -276,6 +276,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 1,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
+  estimate: 20,
   ride_mates_limit: 3
 })
 
@@ -289,6 +290,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 2,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
+  estimate: 22,
   ride_mates_limit: 3
 })
 
@@ -302,6 +304,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 3,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
+  estimate: 30,
   ride_mates_limit: 3
 })
 
@@ -317,6 +320,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 7,
   airport_id: Airport.where(iata_code:"MLB").ids.join.to_i,
+  estimate: 45,
   ride_mates_limit: 3
 })
 
@@ -330,6 +334,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 8,
   airport_id: Airport.where(iata_code:"MLB").ids.join.to_i,
+  estimate: 50,
   ride_mates_limit: 3
 })
 
@@ -343,6 +348,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 9,
   airport_id: Airport.where(iata_code:"MLB").ids.join.to_i,
+  estimate: 40,
   ride_mates_limit: 3
 })
 
@@ -358,6 +364,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 13,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
+  estimate: 35,
   ride_mates_limit: 3
 })
 
@@ -371,6 +378,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 14,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
+  estimate: 30,
   ride_mates_limit: 3
 })
 
@@ -384,6 +392,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 15,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
+  estimate: 28,
   ride_mates_limit: 3
 })
 
@@ -400,6 +409,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 19,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
+  estimate: 40,
   ride_mates_limit: 3
 })
 
@@ -413,6 +423,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 20,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
+  estimate: 40,
   ride_mates_limit: 3
 })
 
@@ -426,6 +437,7 @@ Trip.create!({
   # date: Date.new(2018,12,14),
   user_id: 21,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
+  estimate: 40,
   ride_mates_limit: 3
 })
 
