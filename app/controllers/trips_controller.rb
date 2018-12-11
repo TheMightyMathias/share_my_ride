@@ -131,16 +131,27 @@ class TripsController < ApplicationController
   end
 
   def user_markers
-    @destination = Ridemate.where(trip: @trip).where(user: current_user)
-    @user_marker = {
-      lng: @destination.longitude,
-      lat: @destination.latitude,
-    }
-    @markers << @user_marker
+    destination_marker = {
+        lng: session[:user_coordinates][1],
+        lat: session[:user_coordinates][0]
+      }
+    @markers << destination_marker
   end
 
   def user_markers_confirmed
-
+    if current_user == @trip.user
+      @user_marker = {
+        lng: @trip.longitude,
+        lat: @trip.latitude,
+      }
+    else
+      @destination = Ridemate.where(trip: @trip).where(user: current_user)
+      @user_marker = {
+        lng: @destination.first.longitude,
+        lat: @destination.first.latitude,
+      }
+    end
+    @markers << @user_marker
   end
 
   def trip_params
