@@ -8,6 +8,10 @@ class Trip < ApplicationRecord
 
   geocoded_by :destination
   after_validation :geocode, if: :will_save_change_to_destination?
+  after_update :send_trip_update, if: :saved_change_to_ridemates?
 
-
+private
+  def send_trip_update
+    UserMailer.ridemateconfirm(self).deliver_now
+  end
 end
