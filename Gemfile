@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+# group :development do
+
+# end
+
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
@@ -19,6 +23,11 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+
+gem "letter_opener", group: :development
+gem 'postmark-rails'
 
 gem "geocoder"
 gem 'cloudinary', '~> 1.9.1'
@@ -26,6 +35,7 @@ gem 'carrierwave', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'meta_request'
 end
 
 group :development, :test do

@@ -1,4 +1,3 @@
-<h4 class="h4show" style="color: white;">Your selected trip details are below. Please click join to confirm this trip:</h4>
   <diV class="container" >
     <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -12,9 +11,9 @@
       </div>
       <div class="ride-info-show">
         <ul class="trip-list">
-          <li id="terminal">Name :<%= @trip.user.first_name %></li>
+          <li id="terminal"><b>Trip created by: </b><%= @trip.user.first_name %></li>
 
-          <li> I'm a full stack developer here for Rails training program</li>
+          <li> Going to the city for the weekend, happy to meet locals or tourists to hang out with</li>
         </ul>
         <div class="ride-footer">
           <div id="ride-date">
@@ -26,27 +25,36 @@
         <!-- trip details card -->
     <div class="card trip-details">
       <ul>
-      <li>Meet Up Time: <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
-      <li>Terminal: <%= @trip.terminal %></li>
-      <li>To: <%= @trip.destination %></li>
+      <li><b>From: </b><%= @trip.airport.name %>,
+        <br>Terminal <%= @trip.terminal %></li>
+      <li><b>To: </b><%= @trip.destination %></li>
+      <li><b>Meet Up Time: </b><%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+      <li><b>Estimated cost: </b><%= @trip.estimate %>$</li>
       </ul>
     </div>
 
-
-  <div class="card style="border-bottom:none">
+  <% if @mates.blank? %>
+  <div class="card">
+    <h6 style="margin-left: 10px;">There are no other riders with <%= @trip.user.first_name %> yet</h6>
+  </div>
+  <% else %>
+  <h6>Other Ridemate(s):</h6>
+  <div class="card" id="ride-mates">
     <%  @mates.each do |mate| %>
-        <div class="avatar">
+        <div class="avatar" id="mates-avatar">
         <% if mate.photo.blank? %>
           <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
           <% else %>
           <%= cl_image_tag mate.photo, {class: "user-avatar"} %>
           <% end %>
+        <p><%= mate.first_name %></p>
         </div>
       <% end %>
   </div>
+  <% end %>
 
-
-      <%= link_to "JOIN", trip_ridemates_path(@trip.id),
+     <h4 class="h4show" style="color: white; text-align: center;">Join <%= @trip.user.first_name %>'s trip and get in touch with your ridemates</h4>
+     <%= link_to "JOIN", trip_ridemates_path(@trip.id),
       method: :create,
       data: { confirm: "Are you sure?" }, class: "btn-full home-btn" %>
     </div>
@@ -55,7 +63,7 @@
 <br>
 <div
   id="map"
-  style="width:350px; margin:0 auto;
+  style="width:100%; margin:0 auto;
   height: 200px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"

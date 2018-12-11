@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_113849) do
     t.float "longitude"
     t.datetime "time"
     t.bigint "user_id"
-    t.integer "ride_mates_limit"
+    t.integer "ride_mates_limit", default: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "airport_id"
