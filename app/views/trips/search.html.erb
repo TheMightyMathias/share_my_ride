@@ -1,5 +1,5 @@
-<h2 class="h2search">Search Results</h2>
-<h4 class="h4search"><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%></h4><br>
+<h2 class="h2search text-center">Search Results</h2>
+<h4 class="h4search text-center"><strong>My destination:</strong> <%= truncate(params[:query][:destination], length: 35, omission: '...')%> Terminal: <%= params[:query][:terminal] %></h4>
 <div class="box">
   <div
   id="map"
@@ -9,53 +9,51 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div><br>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <% @trips.each do |trip| %>
-      <div class="card">
-        <div class="avatar">
-          <% if trip.user.photo.blank? %>
-            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-            <% else %>
-            <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
-          <% end %>
-          <%# if current_user.photo.blank? %>
-          <%#= cl_image_tag "user-login-icon-14",  {class: "user-avatar-blnk"} %>
-          <%# else %>
-          <%#= cl_image_tag current_user.photo,  {class: "user-avatar"} %>
 
-         <%# end %>
-       </div>
-       <div class="ride-info">
-         <%= link_to trip_path(trip, query: @params) do %>
-         <ul class="trip-list">
-           <li id="terminal">Terminal <%= trip.terminal %></li>
-           <li id="destination"><%= trip.destination %></li>
-         </ul>
-         <div class="ride-footer">
-           <div id="ride-date">
-             <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
-           </div>
-           <div id='ride-sum'>
-             Ride Mates Limit: <%= trip.ride_mates_limit %>
-             Currently <%= trip.ridemates.count %> mates
-             Price Estimate: $<%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %>
-           </div>
-          <% end %>
-        </div>
-       </div>
+<div class="container">
+
+  <div class="row">
+    <% @trips.each do |trip| %>
+
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <%= link_to trip_path(trip, query: @params) do %>
+          <div class="trip-card">
+            <div class="card">
+              <div class="avatar">
+                <% if trip.user.photo.blank? %>
+                  <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+                <% else %>
+                  <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+                <% end %>
+              </div>
+              <div class="ride-info">
+                <div style="margin-left: 10px;"><% if trip.destination.split(",").last.include?("United States of America") %><strong><%= trip.destination.split(",")[0...-1].join(",") %></strong><% else %> <strong><%= trip.destination %></strong><% end %>
+                </div>
+                <div class="ride-details">
+                  <p><%= trip.time.strftime("%b %e at %l:%M %p") %></p>
+                  <div class="ride-footer">
+                    <strong>RideMates <%= trip.ridemates.count %> / <%= trip.ride_mates_limit %></strong>
+                    <i class="fas fa-dollar-sign"> $<%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %></i>
+                    <% current_location = Geokit::LatLng.new(trip.longitude, trip.latitude) %>
+                    <% destination = @markers.last[:lng], @markers.last[:lat] %>
+                    <i class="fas fa-walking"> <%= current_location.distance_to(destination).round(2) %> miles</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
      </div>
-     <% end %>
+    <% end %>
    </div>
  </div>
  <div class='new-ride text-center'>
    <h4>Can't find a trip you love?</h4>
    <h4>Add a New Trip!</h4>
    <%= link_to new_trip_path do %>
-   <div class=circle-btn>
-     <div class="bar horizontal"></div>
-     <div class="bar vertical"></div>
-   </div>
+     <div class=circle-btn>
+       <div class="bar horizontal"></div>
+       <div class="bar vertical"></div>
+     </div>
    <% end %>
  </div>

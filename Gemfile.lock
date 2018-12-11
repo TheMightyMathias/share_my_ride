@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Indirizzo (0.1.7)
     actioncable (5.2.1)
       actionpack (= 5.2.1)
       nio4r (~> 2.0)
@@ -83,6 +84,7 @@ GEM
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
     geocoder (1.5.0)
+    geokit (1.13.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -226,6 +228,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Indirizzo
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
@@ -235,6 +238,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
   geocoder
+  geokit
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)

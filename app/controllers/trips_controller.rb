@@ -28,19 +28,20 @@ class TripsController < ApplicationController
       trip.trip_users.exclude?(current_user)
     end
 
-     @markers = @trips.map do |trip|
-      {
-        lng: trip.longitude,
-        lat: trip.latitude
-      }
-    end
-
     session[:user_coordinates] = Geocoder.search(params[:query]["destination"]).first.coordinates
 
     destination_marker = {
       lng: session[:user_coordinates][1],
       lat: session[:user_coordinates][0]
     }
+
+     @markers = @trips.map do |trip|
+       {
+          lng: trip.longitude,
+          lat: trip.latitude
+        }
+  end
+
 
     @markers << destination_marker
 
@@ -118,7 +119,7 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:terminal, :airport_id, :destination, :time, :user_id, :estimate)
+    params.require(:trip).permit(:terminal, :airport_id, :destination, :time, :user_id, :estimate, :ride_mates_limit)
   end
 
   def search_params
