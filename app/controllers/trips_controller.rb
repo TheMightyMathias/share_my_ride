@@ -65,6 +65,7 @@ class TripsController < ApplicationController
   def confirmation
     @trip = Trip.find(params["id"])
     @ridemates = @trip.ridemates
+    @ridemate = @ridemates.find_by(user: current_user)
     @mates = @trip.trip_users
     @markers = []
     trip_marker = {
@@ -140,6 +141,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
+
     @trip.ridemates.destroy
     @trip.destroy
     redirect_to profiles_path
