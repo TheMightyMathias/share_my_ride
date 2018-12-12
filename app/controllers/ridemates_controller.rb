@@ -1,5 +1,15 @@
 class RidematesController < ApplicationController
   # after_create :send_trip_confirm
+  before_action :set_ridemate, only: [:destroy]
+
+  def all
+    @ridemates = Ridemate.all
+  end
+
+  def show
+    @ridemate = Ridemate.find(params[:id])
+    redirect_to profiles_path
+  end
 
   def create
     @trip = Trip.find(params[:trip_id])
@@ -19,8 +29,19 @@ class RidematesController < ApplicationController
     end
   end
 
-  # private
+  def destroy
+    @ridemate.destroy
+    redirect_to profiles_path
+  end
+  private
   # def send_trip_confirm
   #   UserMailer.tripconfirm(self).deliver_now
   # end
+
+  def set_ridemate
+    @ridemate = Ridemate.find(params[:id])
+  end
+
 end
+
+

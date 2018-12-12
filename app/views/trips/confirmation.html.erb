@@ -90,6 +90,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <% if current_user == @trip.user %>
 <p><%= link_to "Delete Trip", trip_path(@trip), data: { confirm: "Are you sure?" },method: :delete, class: "btn-border" %></p>
 <% else %>
-<p><%= link_to "Leave Trip", trip_path(@trip), data: { confirm: "Are you sure?" },method: :delete, class: "btn-border" %></p>
+<p><%= link_to "Leave Trip", ridemate_path(@ridemate), data: { confirm: "Are you sure?" },method: :delete, class: "btn-border" %></p>
 <% end %>
 
