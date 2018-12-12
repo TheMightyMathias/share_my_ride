@@ -6,7 +6,7 @@
          <div class="box">
            <div id = "home-form">
             <%= simple_form_for :query, url: search_path, method: "get"  do |t| %>
-            <%= t.input :airport, placeholder: "Choose your Airport", label_html: { class: 'label-form' } %>
+            <%= t.input :airport, placeholder: "Choose your Airport Worldwide", label_html: { class: 'label-form' } %>
               <ul class="suggestions">
               </ul>
             <%= t.input :terminal, placeholder: "Choose your Terminal" %>

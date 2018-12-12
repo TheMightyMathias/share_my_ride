@@ -44,7 +44,7 @@
           <li><b>From: </b><%= @trip.airport.name %>,
             Terminal <%= @trip.terminal %></li>
             <li><b>To: </b><%= @trip.destination %></li>
-            <li><b>Meet Up Time: </b><%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+            <li><b>Meet Up Time: </b><%= @trip.time.strftime("%b %e at %l:%M %p") %></li>
             <li><b>Cost estimate per rider: </b>$ <%= @total_estimate %></li>
           </ul>
         </div>
@@ -56,10 +56,10 @@
             <li>Let's meet at the terminal's taxi station in
               <% if m > 1440 %>
               <% d = m/1440 %>
-              <%= d.round %> days
+              <%= d.round %> day(s)
               <% else %>
               <% d = m %>
-              <%= m.round %> minutes
+              <%= m.round %> minute(s)
               <% end %>
             </li>
             <li>
