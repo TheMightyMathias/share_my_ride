@@ -18,9 +18,8 @@ class TripsController < ApplicationController
     if @airports.include?(params[:query][:airport][0...-5].titleize) || @airports.include?(params[:query][:airport][0...-5])
       airport_name = params[:query][:airport][0...-5]
       @params = search_params
-      time = params[:query][:time]
       @trips = Trip.joins(:airport).where("airports.name @@ '%#{airport_name}%'").order("time ASC")
-      .where.not(user: current_user)
+                   .where.not(user: current_user)
     else
       flash[:alert] = "You need to select a valid airport from the list, buddy."
       redirect_to request.referer
@@ -38,19 +37,19 @@ class TripsController < ApplicationController
       trip.trip_users.exclude?(current_user)
     end
 
-    @trips = @trips.select do |trip|
-      Time.parse(params[:query][:time]) + (60 * 60 * 24) > trip.time
-    end
+    # @trips = @trips.select do |trip|
+    #   Time.parse(params[:query][:time]) + (60 * 60 * 24) > trip.time
+    # end
 
-    @trips = @trips.select do |trip|
-      trip.time > Time.parse(params[:query][:time])
-    end
-
+    # @trips = @trips.select do |trip|
+    #   trip.time > Time.parse(params[:query][:time])
+    # end
 
     @markers = @trips.map do |trip|
       {
         lng: trip.longitude,
-        lat: trip.latitude
+        lat: trip.latitude,
+        infoWindow: { content: render_to_string(partial: "shared/map_window", locals: { trip: trip }) },
       }
     end
 
