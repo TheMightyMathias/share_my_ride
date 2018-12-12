@@ -66,7 +66,7 @@ class TripsController < ApplicationController
       @markers << destination_marker
 
     else
-      @message = "Unfortunatly your search didn't bring any results. Here are all trips leaving from your airport"
+      @message = "Your destination has no matching rides, below are all trips leaving from your airport"
     end
 
     session[:search] = params[:query]
