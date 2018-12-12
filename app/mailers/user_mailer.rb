@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   def tripconfirm(user)
     @trip = Trip.find(user.trip_id)
     @user = User.find(user.user_id)
@@ -9,7 +8,7 @@ class UserMailer < ApplicationMailer
     @trip.ridemates.each do |ridemate|
       if ridemate.user_id != @user.id
         @ridemates = (User.find(ridemate.user_id)).email
-        mail(to: user_email, subject: 'The trip has been updated!')
+        mail(to: user.email, subject: 'The trip has been updated!')
       end
     end
   end
