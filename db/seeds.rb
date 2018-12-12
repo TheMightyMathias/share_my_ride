@@ -37,7 +37,7 @@ end
 puts "creating Users"
 #1
 User.create({
-  email: 'mathias@wagon.com',
+  email: 'mathias@sharemyride.tech',
   password: '123456',
   first_name: 'Mathias',
   last_name: 'Sellam',
@@ -46,7 +46,7 @@ User.create({
 })
 
 User.create({
-  email: 'douglas@wagon.com',
+  email: 'douglas@sharemyride.tech',
   password: '123456',
   first_name: 'Douglas',
   last_name: 'Bay',
@@ -55,7 +55,7 @@ User.create({
 })
 
 User.create({
-  email: 'gollum@wagon.com',
+  email: 'gollum@sharemyride.tech',
   password: '123456',
   first_name: 'Gollum',
   last_name: 'Smeagol',
@@ -64,7 +64,7 @@ User.create({
 })
 
 User.create({
-  email: 'alan@wagon.com',
+  email: 'alan@sharemyride.tech',
   password: '123456',
   first_name: 'Alan',
   last_name: 'Keegan',
@@ -73,7 +73,7 @@ User.create({
 })
 
 User.create({
-  email: 'ian@wagon.com',
+  email: 'ian@sharemyride.tech',
   password: '123456',
   first_name: 'Ian',
   last_name: 'Hunter',
@@ -82,7 +82,7 @@ User.create({
 })
 
 User.create({
-  email: 'jascha@wagon.com',
+  email: 'jascha@sharemyride.tech',
   password: '123456',
   first_name: 'Jascha',
   last_name: 'Drel',
@@ -95,7 +95,7 @@ User.create({
 
 #2
 User.create({
-  email: 'julia@wagon.com',
+  email: 'julia@sharemyride.tech',
   password: '123456',
   first_name: 'Julia',
   last_name: 'Cocco',
@@ -104,7 +104,7 @@ User.create({
 })
 
 User.create({
-  email: 'lucas@wagon.com',
+  email: 'lucas@sharemyride.tech',
   password: '123456',
   first_name: 'Lucas',
   last_name: 'Rocha',
@@ -113,7 +113,7 @@ User.create({
 })
 
 User.create({
-  email: 'donald@wagon.com',
+  email: 'donald@sharemyride.tech',
   password: '123456',
   first_name: 'Donlad',
   last_name: 'Trump',
@@ -122,7 +122,7 @@ User.create({
 })
 
 User.create({
-  email: 'lamina@wagon.com',
+  email: 'lamina@sharemyride.tech',
   password: '123456',
   first_name: 'Lamina',
   last_name: 'Vedder',
@@ -131,7 +131,7 @@ User.create({
 })
 
 User.create({
-  email: 'pierre@wagon.com',
+  email: 'pierre@sharemyride.tech',
   password: '123456',
   first_name: 'Pierre',
   last_name: 'Hervé Basin',
@@ -140,7 +140,7 @@ User.create({
 })
 
 User.create({
-  email: 'alfonso@wagon.com',
+  email: 'alfonso@sharemyride.tech',
   password: '123456',
   first_name: 'Alfonso',
   last_name: 'Garcia De Corral',
@@ -151,7 +151,7 @@ User.create({
 
 #3
 User.create({
-  email: 'mathias@wagon.com',
+  email: 'mathias@sharemyride.tech',
   password: '123456',
   first_name: 'Mathias',
   last_name: 'Sellam',
@@ -160,7 +160,7 @@ User.create({
 })
 
 User.create({
-  email: 'xun@wagon.com',
+  email: 'xun@sharemyride.tech',
   password: '123456',
   first_name: 'Xun',
   last_name: 'Ma',
@@ -169,7 +169,7 @@ User.create({
 })
 
 User.create({
-  email: 'drevil@wagon.com',
+  email: 'drevil@sharemyride.tech',
   password: '123456',
   first_name: 'Dr',
   last_name: 'Evil',
@@ -179,7 +179,7 @@ User.create({
 
 
 User.create({
-  email: 'marina@wagon.com',
+  email: 'marina@sharemyride.tech',
   password: '123456',
   first_name: 'Marina',
   last_name: 'Kjaer',
@@ -188,7 +188,7 @@ User.create({
 })
 
 User.create({
-  email: 'annie@wagon.com',
+  email: 'annie@sharemyride.tech',
   password: '123456',
   first_name: 'Annie',
   last_name: 'Gilchrist',
@@ -197,7 +197,7 @@ User.create({
 })
 
 User.create({
-  email: 'daniel@wagon.com',
+  email: 'daniel@sharemyride.tech',
   password: '123456',
   first_name: 'Daniel',
   last_name: 'Mera De Agustin',
@@ -207,7 +207,7 @@ User.create({
 
 #4
 User.create({
-  email: 'sergi@wagon.com',
+  email: 'sergi@sharemyride.tech',
   password: '123456',
   first_name: 'Sergi',
   last_name: 'Campos',
@@ -216,7 +216,7 @@ User.create({
 })
 
 User.create({
-  email: 'vianney@wagon.com',
+  email: 'vianney@sharemyride.tech',
   password: '123456',
   first_name: 'Vianney',
   last_name: 'De Boisredon',
@@ -225,7 +225,7 @@ User.create({
 })
 
 User.create({
-  email: 'borat@wagon.com',
+  email: 'borat@sharemyride.tech',
   password: '123456',
   first_name: 'Borat',
   last_name: 'Ehh',
@@ -234,7 +234,7 @@ User.create({
 })
 
 User.create({
-  email: 'ryan@wagon.com',
+  email: 'ryan@sharemyride.tech',
   password: '123456',
   first_name: 'Ryan',
   last_name: 'Propst',
@@ -243,7 +243,7 @@ User.create({
 })
 
 User.create({
-  email: 'goga@wagon.com',
+  email: 'goga@sharemyride.tech',
   password: '123456',
   first_name: 'Goga',
   last_name: 'Hayrapetyan',
@@ -252,7 +252,7 @@ User.create({
 })
 
 User.create({
-  email: 'marco@wagon.com',
+  email: 'marco@sharemyride.tech',
   password: '123456',
   first_name: 'Marco',
   last_name: 'Monti',
