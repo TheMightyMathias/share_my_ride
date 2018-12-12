@@ -1,8 +1,12 @@
 Rails.application.configure do
   #user emails via postmark and heroku and our domain email at https://privateemail.com
+
+          #commenting out the lines below for production for demo day
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
   config.action_mailer.default_url_options = { host: "sharemyride.herokuapp.com" }
+
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
