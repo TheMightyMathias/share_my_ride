@@ -1,0 +1,8 @@
+<div style="border-radius: 10px;">
+<%= link_to trip_path(trip, query: @params) do %>
+  <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
+<strong><%= trip.user.first_name %></strong>
+  <%= trip.time.strftime("%b %e at %l:%M %p") %>
+<% end %>
+</div>
+

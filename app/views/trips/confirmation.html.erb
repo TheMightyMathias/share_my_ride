@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div>
-        <h4 style="text-align: center;"><strong>Congrats ! You are now part of <%= @trip.user.first_name %>'s trip with <%= @mates.length - 1 %> other riders</strong></h4>
+        <h4 style="text-align: center;"><strong>Congrats ! You are now part of <%= @trip.user.first_name %>'s trip. See your ridemates below: </strong></h4>
       </div>
 
       <!-- Card for the trip.user -->
@@ -42,10 +42,10 @@
       <div class="card trip-details">
         <ul style="font-size: 17px;">
           <li><b>From: </b><%= @trip.airport.name %>,
-            <br>Terminal <%= @trip.terminal %></li>
+            Terminal <%= @trip.terminal %></li>
             <li><b>To: </b><%= @trip.destination %></li>
             <li><b>Meet Up Time: </b><%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
-            <li><b>Cost estimate per rider: </b><%= @total_estimate %>$</li>
+            <li><b>Cost estimate per rider: </b>$ <%= @total_estimate %></li>
           </ul>
         </div>
 

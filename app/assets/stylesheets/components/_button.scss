@@ -1,4 +1,9 @@
 //solid back ground button only used on home page
+.conf-buttons {
+  display: flex;
+  margin: 0;
+}
+
 .btn-full {
   background: linear-gradient(45deg, #A234D5, #D74059);
   width: 105px;
