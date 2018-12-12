@@ -1,14 +1,6 @@
-<% if @owner %>
-<%= render ‘ownerconfirm’, user: @owner %>
-<% if @ridemates %>
-<%= render ‘ridemateconfirm’, user: @ridemates %>
-<%# if @ridemate %>
-<%#= render 'tripconfirm' %>
+<h3>Hi <%= @owner.first_name %>,</h3>
 
-
-<h3>Hi <%= @user.first_name %>,</h3>
-
-  <p>You have booked the following trip with ShareMyRide. Please find the confirmation details below:</p>
+  <p>Another rider has just booked with ShareMyRide to join your trip. Please find the updated confirmation details below:</p>
 
   <ul>
       <li>Terminal: <%= @trip.terminal %></li>
@@ -26,4 +18,3 @@ The ShareMyRide Team
 www.sharemyride.tech
 Contact us: admin@sharemyride.tech
 </pre>
-
