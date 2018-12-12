@@ -6,7 +6,7 @@
 <%# end %>
 
 
-<h3>Hi <%= @user.first_name %>,</h3>
+<h4>Hi <%= @user.first_name %>,</h4>
 
   <p>You have booked the following trip with ShareMyRide. Please find the confirmation details below:</p>
 
@@ -14,16 +14,15 @@
       <li>Terminal: <%= @trip.terminal %></li>
       <li>Meet Up Time: <%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
       <li>To: <%= @trip.destination %></li>
-      <li>Total Riders: <%= @trip.ridemates.count %></li>
   </ul>
 
 <p>Thank you for using ShareMyRide, we hope you have a safe and pleasant journey!</p>
 <br>
-<p>Cheers,</p>
+<p style="font-size: 1em">cheers,</p>
 
-<pre style="font-size: 14px;  font-family: 'sans-serif' ">
+<pre style="font-size: 14px;  font-family: 'Raleway' link="blue" ">
 The ShareMyRide Team
 www.sharemyride.tech
-Contact us: admin@sharemyride.tech
+contact us:<a href="admin@sharemyride.tech">admin@sharemyride.tech</a>
 </pre>
 
