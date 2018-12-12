@@ -8,7 +8,7 @@
 
 .card {
   display: flex;
-   align-items: center;
+  align-items: center;
    // border: 1px solid rgba(220,224,244,0.4);
    margin-bottom: 8px;
    // box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
@@ -16,6 +16,31 @@
    border-bottom: 1px solid #A535CF;
    color: white;
    // background-color: rgba(0, 0, 0, 0.3);
+ }
+
+ .card-profile {
+
+  display: flex;
+  border: 1px solid white;
+  align-items: center;
+   // border: 1px solid rgba(220,224,244,0.4);
+   margin-bottom: 8px;
+   // box-shadow: 3px 3px 2px 0px rgba(8,8,8,1);
+   // border-bottom: 1px solid rgba(220,224,244,0.4);
+   // border-bottom: 1px solid #A535CF;
+   color: white;
+   // background-color: rgba(0, 0, 0, 0.3);
+ }
+
+ .ride-info-profile {
+
+  width: 80%;
+  text-decoration: none;
+  color: white;
+  margin-left: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .show-user {
@@ -26,15 +51,15 @@
 .trip-details {
   padding: 10px;
 
-   ul {
+  ul {
    list-style: none;
    padding-left: 0;
    font-size:15px;
-  }
+ }
 
-  li {
-    margin-top: 5px;
-  }
+ li {
+  margin-top: 5px;
+}
 }
 
 .card:first-child {
@@ -46,26 +71,26 @@
 }
 
 .user-avatar {
-    width:50px;
-    height:50px;
-    border-radius: 50%;
-    margin: 5px;
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  margin: 5px;
 }
 
 .ride-info-show {
  // align-items: center;
  // padding: 20px;
-  margin-top: 8px;
-  margin-left: -10px;
-  color: white;
-  margin-right: 5px;
+ margin-top: 8px;
+ margin-left: -10px;
+ color: white;
+ margin-right: 5px;
 
-  ul li{
+ ul li{
    list-style: none;
    padding-left: 0;
    font-size: 15px;
    margin: 12px 0;
-  }
+ }
 }
 
 #ride-mates {
