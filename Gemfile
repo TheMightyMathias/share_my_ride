@@ -4,7 +4,6 @@ ruby '2.4.4'
 # group :development do
 
 # end
-
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
@@ -14,6 +13,7 @@ gem 'rails', '5.2.1'
 gem 'redis'
 gem 'geokit'
 gem 'momentjs-rails'
+gem 'uber-ruby', require: 'uber'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

@@ -104,9 +104,35 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    @trip.airport_id = Airport.where(name: params["trip"]["airport"]).ids.join.to_i
-    @trip.save
-    redirect_to confirmation_path(@trip)
+    # link the object, dont use ids directly
+    # @trip.airport_id = Airport.where(name: params["trip"]["airport"]).ids.join.to_i
+    @airport = Airport.find_by(name: params["trip"]["airport"])
+    @trip.airport = @airport
+    @trip.geocode
+    # raise
+    if params['trip']['estimate'].present?
+      @trip.estimate = params['trip']['estimate']
+    else
+      client = Uber::Client.new do |config|
+        config.server_token  = ENV["UBER_SERVER_KEY"]
+      end
+      estimation = client.price_estimations(
+        start_latitude: @airport.latitude,
+        start_longitude: @airport.longitude,
+        end_latitude: @trip.latitude,
+        end_longitude: @trip.longitude
+      )[0] # get the first price object out of the array.
+      if estimation
+        price_average = (estimation.low_estimate + estimation.high_estimate) / 2
+        @trip.estimate = price_average
+      end
+    end
+    # if the uber api returns nothing then we could manually set a estimate
+    if @trip.save
+      redirect_to confirmation_path(@trip)
+    else
+      render :new
+    end
   end
 
   def chat
