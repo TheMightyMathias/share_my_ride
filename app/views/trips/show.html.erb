@@ -50,8 +50,9 @@
       <li><b>From: </b><%= @trip.airport.name %>,
         <br>Terminal <%= @trip.terminal %></li>
       <li><b>To: </b><%= @trip.destination %></li>
-      <li><b>Meet Up Time: </b><%= @trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
-      <li><b>Estimated cost: </b><%= @trip.estimate %>$</li>
+      <li><b>Meet Up Time: </b><%= @trip.time.strftime("%b %e at %l:%M %p") %></li>
+
+      <li><b>Estimated cost: </b>$ <%= @total_estimate %></li>
       </ul>
     </div>
 

@@ -97,7 +97,7 @@ class TripsController < ApplicationController
     }
     @markers << trip_marker
 
-    @total_estimate = (@trip.estimate / (@mates.count + 1)).round(2)
+    @total_estimate = (@trip.estimate / (@mates.count + 2)).round(2)
 
     user_markers
   end
