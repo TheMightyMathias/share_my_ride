@@ -1,9 +1,9 @@
 <%# if @owner %>
 <%#= render ‘ownerconfirm’, user: @owner %>
+<%# end %>
 <%# if @ridemates %>
 <%#= render ‘ridemateconfirm’, user: @ridemates %>
-<%# if @ridemate %>
-<%#= render 'tripconfirm' %>
+<%# end %>
 
 
 <h3>Hi <%= @user.first_name %>,</h3>
