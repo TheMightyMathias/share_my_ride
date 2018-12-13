@@ -13,7 +13,7 @@
         <div id="ridemate-confirmation">
           <div >
             <% if @trip.user.photo.blank? %>
-            <img cid="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <img id="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
             <% else %>
             <%= cl_image_tag @trip.user.photo, {id: "avatar-confirmation"} %>
             <% end %>

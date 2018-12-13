@@ -155,6 +155,21 @@ class TripsController < ApplicationController
     redirect_to profiles_path
   end
 
+  def review
+    set_trip
+    @mates = @trip.trip_users
+    @mates = @mates.select do |mate|
+      mate != current_user
+    end
+    @reviews = []
+    @mates.each do |mate|
+      @reviews << Review.new(reviewed_id: mate.id, reviewer_id: current_user.id)
+    end
+    @reviews.each do |review|
+      review.trip = @trip
+    end
+  end
+
   private
 
   def trip_markers

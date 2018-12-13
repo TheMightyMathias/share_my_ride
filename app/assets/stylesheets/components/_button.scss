@@ -83,3 +83,31 @@
   border: none;
   color: white;
 }
+
+.btn-full-small {
+  // background: linear-gradient(45deg, #A234D5, #D74059);
+  width: 70px;
+  height: 37.5px;
+  text-align: center;
+  font-size: 12px;
+  padding: 8px 8px 8px 8px;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.btn-green {
+  background-color: #006600;
+}
+
+.btn-blue {
+  background-color: #0166FF;
+}
+
+.btn-red {
+  background-color: #FA0101;
+}
+
+
