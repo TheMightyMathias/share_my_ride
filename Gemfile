@@ -26,6 +26,8 @@ gem 'webpacker'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 
+gem 'sidekiq'
+
 gem "letter_opener", group: :development
 gem 'postmark-rails'
 

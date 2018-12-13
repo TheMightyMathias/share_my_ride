@@ -6,6 +6,6 @@ class Ridemate < ApplicationRecord
 
   private
   def send_trip_confirm
-    UserMailer.tripconfirm(self).deliver_now
+    UserMailer.tripconfirm(self).deliver_later
   end
 end

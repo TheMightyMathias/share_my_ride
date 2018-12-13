@@ -14,7 +14,7 @@ class Trip < ApplicationRecord
 
 private
   def send_trip_update
-    UserMailer.ridemateconfirm(self).deliver_now
+    UserMailer.ridemateconfirm(self).deliver_later
   end
 
   def estimate_not_nil
