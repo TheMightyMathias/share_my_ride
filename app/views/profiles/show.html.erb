@@ -95,8 +95,6 @@
           <h2 class="h2search"><b>Joined Trips</b></h2>
           <% @ridemate_trips.each do |trip| %>
           <%= link_to confirmation_path(trip.id) do %>
-
-
           <div class="card">
             <div class="avatar">
               <% if trip.user.photo.blank? %>
@@ -119,14 +117,11 @@
                <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
                <%= link_to "Review", review_path(trip), class: "btn-full" %>
               </li>
-
-
-
-
              <% end %>
            </div>
          </div>
-       </div>
+
        <% end %>
+       </div>
      </div>
    </div>
