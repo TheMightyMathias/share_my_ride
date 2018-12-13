@@ -151,7 +151,7 @@ User.create({
 
 #3
 User.create({
-  email: 'mathias@sharemyride.tech',
+  email: 'mathias2@sharemyride.tech',
   password: '123456',
   first_name: 'Mathias',
   last_name: 'Sellam',
@@ -268,13 +268,13 @@ puts "creating trips"
 #Bali Trips
 Trip.create!({
   terminal: '1',
-  destination: 'Four Season Bali',
-  latitude: -8.500776199999999,
-  longitude: 115.24154120000003,
-  time: Time.new(2018,12,14,13,30),
-  estimate: 8.14,
+  destination: 'Ayana Resort & Spa, Bali',
+  latitude: -8.787283423331326,
+  longitude: 115.13886451721191,
+  time: Time.new(2018,12,14,21,40),
+  estimate: 20,
   # date: Date.new(2018,12,14),
-  user_id: 1,
+  user_id: 2,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
   ride_mates_limit: 3
 })
@@ -284,10 +284,10 @@ Trip.create!({
   destination: 'Kubu, Bangli Sub-District',
   latitude: -8.4303071,
   longitude: 115.36375929999997,
-  time: Time.new(2018,12,14,15,40),
-  estimate: 14.14,
+  time: Time.new(2018,12,14,21,50),
+  estimate: 20,
   # date: Date.new(2018,12,14),
-  user_id: 2,
+  user_id: 23,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
   ride_mates_limit: 3
 })
@@ -297,10 +297,10 @@ Trip.create!({
   destination: 'Bali Volcano',
   latitude: -8.224417899999997,
   longitude: 115.39595129999998,
-  time: Time.new(2018,12,14,16,50),
-  estimate: 120.14,
+  time: Time.new(2018,12,14,21,30),
+  estimate: 50.14,
   # date: Date.new(2018,12,14),
-  user_id: 3,
+  user_id: 22,
   airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
   ride_mates_limit: 3
 })
@@ -312,7 +312,7 @@ Trip.create!({
   destination: 'Cup Of Truth café',
   latitude: -37.8177625,
   longitude: 144.96598829999994,
-  time: Time.new(2018,12,14,18,50),
+  time: Time.new(2018,12,12,18,50),
   # date: Date.new(2018,12,14),
   user_id: 7,
   airport_id: Airport.where(iata_code:"MLB").ids.join.to_i,
@@ -325,7 +325,7 @@ Trip.create!({
   destination: 'Royal Botanic Gardens',
   latitude: -37.829865,
   longitude: 144.97529580000003,
-  time: Time.new(2018,12,14,14,50),
+  time: Time.new(2018,12,12,14,50),
   estimate: 50.14,
   # date: Date.new(2018,12,14),
   user_id: 8,
@@ -338,7 +338,7 @@ Trip.create!({
   destination: 'Melbourne Showground',
   latitude: -37.7802949,
   longitude: 144.91482559999997,
-  time: Time.new(2018,12,14,15,10),
+  time: Time.new(2018,12,12,15,10),
   estimate: 40.14,
   # date: Date.new(2018,12,14),
   user_id: 9,
@@ -353,7 +353,7 @@ Trip.create!({
   destination: 'Technological University of Panama',
   latitude: 9.0238187,
   longitude: -79.53153980000002,
-  time: Time.new(2018,12,14,15,50),
+  time: Time.new(2018,12,12,15,50),
   # date: Date.new(2018,12,14),
   user_id: 13,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
@@ -366,7 +366,7 @@ Trip.create!({
   destination: 'Recreational Park Omar Torrijos',
   latitude: 8.9973491,
   longitude: -79.5076396,
-  time: Time.new(2018,12,14,16,50),
+  time: Time.new(2018,12,12,16,50),
   # date: Date.new(2018,12,14),
   user_id: 14,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
@@ -379,7 +379,7 @@ Trip.create!({
   destination: 'Vía Cincuentenario',
   latitude: 9.006719230352909,
   longitude: -79.48526859283447,
-  time: Time.new(2018,12,14,19,30),
+  time: Time.new(2018,12,12,19,30),
   # date: Date.new(2018,12,14),
   user_id: 15,
   airport_id: Airport.where(iata_code:"PTY").ids.join.to_i,
@@ -395,7 +395,7 @@ Trip.create!({
   destination: 'Arc de Triomphe',
   latitude: 48.8737917,
   longitude: 2.29502750000006,
-  time: Time.new(2018,12,14,15,30),
+  time: Time.new(2018,12,12,15,30),
   estimate: 40.14,
   # date: Date.new(2018,12,14),
   user_id: 19,
@@ -408,7 +408,7 @@ Trip.create!({
   destination: 'Sacré-Cœur',
   latitude: 48.88670459999999,
   longitude: 2.34310430000005,
-  time: Time.new(2018,12,14,17,50),
+  time: Time.new(2018,12,12,17,50),
   # date: Date.new(2018,12,14),
   user_id: 20,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
@@ -421,7 +421,7 @@ Trip.create!({
   destination: 'Louvre Museum',
   latitude: 48.8606111,
   longitude: 2.3376439999999548,
-  time: Time.new(2018,12,14,16,40),
+  time: Time.new(2018,12,12,16,40),
   # date: Date.new(2018,12,14),
   user_id: 21,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
@@ -458,7 +458,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 10,
+  user_id: 2,
   trip_id: 4,
   destination: '11 Collins St, Melbourne VIC 3004, Australia',
   longitude: -37.813784667931245,
@@ -466,7 +466,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 11,
+  user_id: 23,
   trip_id: 4,
   destination: '200 St Kilda Rd, Southbank VIC 3006, Australia',
   longitude: -37.82253123860033,
@@ -474,7 +474,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 12,
+  user_id: 22,
   trip_id: 5,
   destination: 'Bay Trail, Port Melbourne VIC 3207, Australia',
   longitude: -37.84097022350016,
@@ -482,7 +482,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 16,
+  user_id: 2,
   trip_id: 7,
   destination: 'State Park Cir, Panama City, FL 32408, USA',
   longitude: 30.133399313136763,
@@ -490,7 +490,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 17,
+  user_id: 23,
   trip_id: 7,
   destination: '9323 Front Beach Rd, Panama City Beach, FL 32407, USA',
   longitude: 30.179115283839486,
@@ -498,7 +498,7 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 18,
+  user_id: 22,
   trip_id: 8,
   destination: '2205 E 5th St, Panama City, FL 32401, USA',
   longitude: 30.15703919399514,
@@ -523,10 +523,68 @@ Ridemate.create({
 })
 
 Ridemate.create({
-  user_id: 24,
+  user_id: 2,
   trip_id: 11,
   destination: 'Le Panthéon, 75005 Paris, France',
   longitude: 48.846248023032196,
   latitude: 2.346353530883789,
 })
+
+puts "creating reviews"
+
+Review.create({
+  rating: "Ok",
+  reviewer_id: 7,
+  reviewed_id: 2,
+  trip_id: 4,
+})
+Review.create({
+  rating: "Ok",
+  reviewer_id: 7,
+  reviewed_id: 23,
+  trip_id: 4,
+})
+Review.create({
+  rating: "Ok",
+  reviewer_id: 8,
+  reviewed_id: 22,
+  trip_id: 5,
+})
+Review.create({
+  rating: "Great",
+  reviewer_id: 19,
+  reviewed_id: 2,
+  trip_id: 10,
+})
+Review.create({
+  rating: "Great",
+  reviewer_id: 19,
+  reviewed_id: 23,
+  trip_id: 10,
+})
+Review.create({
+  rating: "Great",
+  reviewer_id: 20,
+  reviewed_id: 22,
+  trip_id: 11,
+})
+Review.create({
+  rating: "Great",
+  reviewer_id: 13,
+  reviewed_id: 2,
+  trip_id: 7,
+})
+Review.create({
+  rating: "Ok",
+  reviewer_id: 13,
+  reviewed_id: 23,
+  trip_id: 7,
+})
+Review.create({
+  rating: "Great",
+  reviewer_id: 14,
+  reviewed_id: 22,
+  trip_id: 8,
+})
+
 
