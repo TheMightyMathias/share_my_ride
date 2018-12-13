@@ -183,11 +183,19 @@ class TripsController < ApplicationController
   end
 
   def user_markers
+    if session[:user_coordinates].nil?
+      destination_marker = {
+        lng: @trip.longitude,
+        lat: @trip.latitude
+      }
+    else
+
     destination_marker = {
         lng: session[:user_coordinates][1],
         lat: session[:user_coordinates][0]
       }
     @markers << destination_marker
+    end
   end
 
   def user_markers_confirmed
