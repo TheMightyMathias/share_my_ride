@@ -38,30 +38,27 @@
         <% @user_trips.each do |trip| %>
         <%= link_to confirmation_path(trip.id) do %>
         <div class="card">
-
           <div class="avatar">
-
             <% if trip.user.photo.blank? %>
             <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
             <% else %>
             <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
             <% end %>
-
           </div>
           <div class="ride-info">
-
            <ul class="trip-list">
-             <li id="terminal">Terminal <%= trip.terminal %></li>
+             <li id="terminal"><%= trip.airport.name %></li>
              <li id="destination"><%= trip.destination %></li>
            </ul>
            <div class="ride-footer">
              <div id="ride-date">
-               <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
-               <p>Ride Mates: <%= trip.ride_mates_limit %></p>
+               <p class="p-color">Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
+               <p class="p-color">Ride Mates: <%= trip.ride_mates_limit %></p>
                <p>
                 <br>
                 <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
               </p>
+
             </div>
 
             <div id='ride-sum'>
@@ -73,6 +70,9 @@
       <% end %>
     </div>
     </div
+
+
+    -------------------------------------------------->
 
     <div class="container">
       <div class="row">
@@ -94,13 +94,13 @@
             <div class="ride-info">
 
              <ul class="trip-list">
-               <li id="terminal">Terminal <%= trip.terminal %></li>
+               <li id="terminal"><%= trip.airport.name %></li>
                <li id="destination"><%= trip.destination %></li>
              </ul>
              <div class="ride-footer">
                <div id="ride-date">
-                 <p>Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
-                 <p>Ride Mates: <%= trip.ride_mates_limit %></p>
+                 <p class="p-color">Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
+                 <p class="p-color">Ride Mates: <%= trip.ride_mates_limit %></p>
                  <br>
                  <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
                </p>
