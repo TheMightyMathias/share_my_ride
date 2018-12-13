@@ -163,6 +163,9 @@ class TripsController < ApplicationController
       mate != current_user
     end
     @reviews = []
+    if @trip.user != current_user
+      @reviews << Review.new(reviewed_id: @trip.user.id, reviewer_id: current_user.id)
+    end
     @mates.each do |mate|
       @reviews << Review.new(reviewed_id: mate.id, reviewer_id: current_user.id)
     end

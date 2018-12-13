@@ -9,6 +9,33 @@
         <% else %>
         <%= cl_image_tag @user.photo, class: "img-responsive" %>
         <% end %>
+      </div>
+      <div style="display:flex; justify-content: space-between;margin-top:10px; width: 30%; margin-left:35%;margin-right:35%; margin-top:-30px; margin-bottom:-20px;">
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-frown" style="color:#FA0101; font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: current_user.id).where(rating: "Terrible").count %></p>
+              </div>
+            </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-meh" style="color:#0166FF;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: current_user.id).where(rating: "Ok").count %></p>
+              </div>
+            </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-smile" style="color:#006600;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: current_user.id).where(rating: "Great").count %></p>
+              </div>
+            </div>
+          </div>
         <div class="profile-info">
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
@@ -34,42 +61,30 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <h2 class="h2search">My Trips</h2>
+        <h2 class="h2search"><b>My Trips</b></h2>
         <% @user_trips.each do |trip| %>
         <%= link_to confirmation_path(trip.id) do %>
         <div class="card">
-          <div class="avatar">
-            <% if trip.user.photo.blank? %>
-            <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
-            <% else %>
-            <%= cl_image_tag trip.user.photo, {class: "user-avatar"} %>
-            <% end %>
-          </div>
           <div class="ride-info">
            <ul class="trip-list">
-             <li id="terminal"><%= trip.airport.name %></li>
-             <li id="destination"><%= trip.destination %></li>
+             <li id="destination"><b>From: </b><%= trip.airport.name %></li>
+             <li id="destination"><b>To: </b><%= trip.destination %></li>
+             <br>
+             <li id="destination"><b>Departure: </b><%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+             <li id="destination"><b>Passengers: </b><%= trip.ridemates.count + 1 %> / <%= trip.ride_mates_limit + 1 %></li>
+             <br>
+             <li id="destination">
+               <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
+               <%= link_to "Review", review_path(trip), class: "btn-full" %>
+              </li>
            </ul>
-           <div class="ride-footer">
-             <div id="ride-date">
-               <p class="p-color">Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
-               <p class="p-color">Ride Mates: <%= trip.ride_mates_limit %></p>
-               <p>
-                <br>
-                <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
-              </p>
-
-            </div>
-
-            <div id='ride-sum'>
-            </div>
-            <% end %>
           </div>
+            <% end %>
         </div>
-      </div>
       <% end %>
     </div>
-    </div
+  </div>
+  </div
 
 
     -------------------------------------------------->
@@ -77,13 +92,13 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-          <h2 class="h2search">Joined Trips</h2>
+          <h2 class="h2search"><b>Joined Trips</b></h2>
           <% @ridemate_trips.each do |trip| %>
           <%= link_to confirmation_path(trip.id) do %>
+
+
           <div class="card">
-
             <div class="avatar">
-
               <% if trip.user.photo.blank? %>
               <img class="user-avatar" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
               <% else %>
@@ -93,21 +108,21 @@
             </div>
             <div class="ride-info">
 
-             <ul class="trip-list">
-               <li id="terminal"><%= trip.airport.name %></li>
-               <li id="destination"><%= trip.destination %></li>
-             </ul>
-             <div class="ride-footer">
-               <div id="ride-date">
-                 <p class="p-color">Departure: <%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></p>
-                 <p class="p-color">Ride Mates: <%= trip.ride_mates_limit %></p>
-                 <br>
-                 <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
-               </p>
-             </div>
+           <ul class="trip-list">
+             <li id="destination"><b>From: </b><%= trip.airport.name %></li>
+             <li id="destination"><b>To: </b><%= trip.destination %></li>
+             <br>
+             <li id="destination"><b>Departure: </b><%= trip.time.strftime("%e %b %Y %H:%M:%S%p") %></li>
+             <li id="destination"><b>Passengers: </b><%= trip.ridemates.count + 1 %> / <%= trip.ride_mates_limit + 1 %></li>
+             <br>
+             <li id="destination">
+               <%= link_to "Chat", chat_path(trip), class: "btn-full" %>
+               <%= link_to "Review", review_path(trip), class: "btn-full" %>
+              </li>
 
-             <div id='ride-sum'>
-             </div>
+
+
+
              <% end %>
            </div>
          </div>
