@@ -29,14 +29,20 @@
               <div class="ride-details">
                 <p><%= trip.time.strftime("%b %e at %l:%M %p") %></p>
                 <div class="ride-footer">
-                  <strong>RideMates</strong> <%= trip.ridemates.count %> / <%= trip.ride_mates_limit %>
-                  <i class="fas fa-dollar-sign"></i> <%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %>
+                  <div id="ridemates">
+                  <strong>Passengers</strong> &nbsp <%= trip.ridemates.count + 1 %> / <%= trip.ride_mates_limit + 1 %>
+                  </div>
+                  <div id="cost">
+                  <i class="fas fa-dollar-sign"></i>  &nbsp <%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %>
+                  </div>
+                  <div id="distance">
                   <% current_location = Geokit::LatLng.new(trip.longitude, trip.latitude) %>
                   <% destination = @markers.last[:lng], @markers.last[:lat] %>
-                  <i class="fas fa-walking"></i> <%= current_location.distance_to(destination).round(2) %> miles
+                  <i class="fas fa-walking"></i> &nbsp <%= current_location.distance_to(destination).round(2) %> miles
+                  </div>
                 </div>
               </div>
-            </div>
+            </div><hr>
           </div>
         <% end %>
      </div>
