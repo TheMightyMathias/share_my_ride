@@ -42,9 +42,9 @@ class RidematesController < ApplicationController
     redirect_to profiles_path
   end
   private
-  # def send_trip_confirm
-  #   UserMailer.tripconfirm(self).deliver_now
-  # end
+  def send_trip_confirm
+    UserMailer.tripconfirm(self).deliver_later
+  end
 
   def set_ridemate
     @ridemate = Ridemate.find(params[:id])
