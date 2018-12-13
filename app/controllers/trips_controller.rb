@@ -37,13 +37,13 @@ class TripsController < ApplicationController
       trip.trip_users.exclude?(current_user)
     end
 
-    # @trips = @trips.select do |trip|
-    #   Time.parse(params[:query][:time]) + (60 * 60 * 24) > trip.time
-    # end
+    @trips = @trips.select do |trip|
+      Time.parse(params[:query][:time]) + (60 * 60 * 24) > trip.time
+    end
 
-    # @trips = @trips.select do |trip|
-    #   trip.time > Time.parse(params[:query][:time])
-    # end
+    @trips = @trips.select do |trip|
+      trip.time > Time.parse(params[:query][:time])
+    end
 
     @markers = @trips.map do |trip|
       {
