@@ -17,11 +17,9 @@ class RidematesController < ApplicationController
     @ridemate.trip = @trip
     @ridemate.user = current_user
     if session[:search]["destination"] == "";
-      @no_destination_message = "As you did not provide a destination, here's a great destination to check out in the city"
-      trip_des = Geocoder.search([@trip.latitude, @trip.longitude]).last.data["address"]["state"]
-      @ridemate.destination = Geocoder.search(trip_des).last.data["display_name"]
-      @ridemate.longitude = Geocoder.search(trip_des).last.data["lon"]
-      @ridemate.latitude = Geocoder.search(trip_des).last.data["lat"]
+      @ridemate.destination = @trip.destination
+      @ridemate.longitude = @trip.longitude
+      @ridemate.latitude = @trip.latitude
     else
       destination_coordinates = Geocoder.search(session[:search]["destination"]).first.coordinates
       @ridemate.destination = session[:search]["destination"]

@@ -46,10 +46,14 @@
             Terminal <%= @trip.terminal %></li>
             <li><b>To: </b><%= @trip.destination %></li>
             <li><b>Meet Up Time: </b><%= @trip.time.strftime("%b %e at %l:%M %p") %></li>
-            <li><b>Cost estimate per rider: </b>$ <%= @total_estimate %></li>
+            <li><b>Cost estimate per rider: </b>$ <%= @total_estimate %><h6 style="color: green; font-family: sans-serif; font-size: 17px;"><%= @uber_message %></h6></li>
           </ul>
         </div>
-
+          <div class="container text-center">
+        <% if @request_button = true %>
+        Click Below to Order a Ride<br> <%= link_to image_tag("uber_logo2.jpg", :alt => "uber", :class => "uber_button"), "https://m.uber.com/ul/?client_id=#{ENV['UBER_CLIENT_ID']}" %>
+        <% end %>
+      </div>
         <div class="card trip-details">
           <ul>
             <% t =  @trip.time - Time.now %>

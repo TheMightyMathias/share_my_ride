@@ -76,6 +76,11 @@ class TripsController < ApplicationController
     @ridemates = @trip.ridemates
     @ridemate = @ridemates.find_by(user: current_user)
     @mates = @trip.trip_users
+    @uber_message = session[:uber_message]
+    if @uber_message.include?("UBER")
+      @request_button = true
+    end
+
     @markers = []
     trip_marker = {
       lng: @trip.longitude,
@@ -122,9 +127,10 @@ class TripsController < ApplicationController
     # raise
     if params['trip']['estimate'].present?
       @trip.estimate = params['trip']['estimate']
+      session[:uber_message] = "Estimate provided manually by USER"
     else
       client = Uber::Client.new do |config|
-        config.server_token  = ENV["UBER_SERVER_KEY"]
+        config.server_token = ENV["UBER_SERVER_KEY"]
       end
       estimation = client.price_estimations(
         start_latitude: @airport.latitude,
@@ -133,8 +139,9 @@ class TripsController < ApplicationController
         end_longitude: @trip.longitude
       )[0] # get the first price object out of the array.
       if estimation
-        price_average = (estimation.low_estimate + estimation.high_estimate) / 2
-        @trip.estimate = price_average
+        @price_average = (estimation.low_estimate + estimation.high_estimate) / 2
+        @trip.estimate = @price_average
+        session[:uber_message] = "Estimate provided by UBER"
       end
     end
     # if the uber api returns nothing then we could manually set a estimate
@@ -186,18 +193,12 @@ class TripsController < ApplicationController
   end
 
   def user_markers
-    if session[:user_coordinates].nil?
+    if session[:search]["destination"] != "";
       destination_marker = {
-        lng: @trip.longitude,
-        lat: @trip.latitude
-      }
-    else
-
-    destination_marker = {
         lng: session[:user_coordinates][1],
         lat: session[:user_coordinates][0]
       }
-    @markers << destination_marker
+      @markers << destination_marker
     end
   end
 
