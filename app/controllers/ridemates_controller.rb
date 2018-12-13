@@ -16,7 +16,7 @@ class RidematesController < ApplicationController
     @ridemate = Ridemate.new
     @ridemate.trip = @trip
     @ridemate.user = current_user
-    if session[:search]["destination"] == "";
+    if session[:search]["destination"] == ""
       @ridemate.destination = @trip.destination
       @ridemate.longitude = @trip.longitude
       @ridemate.latitude = @trip.latitude

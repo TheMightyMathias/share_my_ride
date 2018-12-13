@@ -77,7 +77,7 @@ class TripsController < ApplicationController
     @ridemate = @ridemates.find_by(user: current_user)
     @mates = @trip.trip_users
     @uber_message = session[:uber_message]
-    if @uber_message.include?("UBER")
+    if @uber_message && @uber_message.include?("UBER")
       @request_button = true
     end
 
