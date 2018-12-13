@@ -10,7 +10,37 @@
       <div class="ride-info-show">
         <ul class="trip-list">
           <li id="terminal"><b>Trip created by: </b><%= @trip.user.first_name %></li>
-          <li><b>Share My Ride score: </b> REVIEWS</li>
+          <li><b>Share My Ride score:</b>
+          <br>
+      <div style="display:flex; justify-content: space-between;margin-top:10px; margin-left:10px;">
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-frown" style="color:#FA0101; font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: @trip.user.id).where(rating: "Terrible").count %></p>
+              </div>
+            </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-meh" style="color:#0166FF;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: @trip.user.id).where(rating: "Ok").count %></p>
+              </div>
+            </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-smile" style="color:#006600;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: @trip.user.id).where(rating: "Great").count %></p>
+              </div>
+            </div>
+
+          </div>
+
+          </li>
         </ul>
         <div class="ride-footer">
           <div id="ride-date">
@@ -37,10 +67,36 @@
               <%= cl_image_tag mate.photo, {id: "avatar-confirmation"} %>
               <% end %>
             </div>
-            <div id="user-confirmation" style="font-size: 15px;">
-              <%= mate.first_name %>
+
+          <div style="display:flex; justify-content: space-between;margin-top:10px; margin-left:10px;">
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-frown" style="color:#FA0101; font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: mate.id).where(rating: "Terrible").count %></p>
+              </div>
             </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-meh" style="color:#0166FF;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: mate.id).where(rating: "Ok").count %></p>
+              </div>
+            </div>
+            <div id="ridemate-confirmation">
+              <div >
+                <i class="far fa-smile" style="color:#006600;font-size:25px;"></i>
+              </div>
+              <div id="user-confirmation" style="font-size: 15px;">
+                <p><%= Review.where(reviewed_id: mate.id).where(rating: "Great").count %></p>
+              </div>
+            </div>
+
           </div>
+          </div>
+
         <% end  %>
   </div>
   <% end %>

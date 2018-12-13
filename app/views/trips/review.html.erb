@@ -28,7 +28,7 @@
                 <%= f.input :trip_id, :as => :hidden, :input_html => { :value => review.trip_id } %>
                 <%= f.submit "Terrible", :name => "rating",value: "Terrible", class: "btn-full-small btn-red"%>
                 <%= f.submit "OK", :name => "rating", value: "Ok", class: "btn-full-small btn-blue" %>
-                <%= f.submit "Great", :name => "rating", value: "Great !!", class: "btn-full-small btn-green" %>
+                <%= f.submit "Great", :name => "rating", value: "Great", class: "btn-full-small btn-green" %>
               <% end %>
             <% else %>
               <h4>Sorry you have already rated <%= review.reviewed.first_name %></h4>
