@@ -23,13 +23,13 @@
               <% end %>
             </div>
             <div class="ride-info">
-              <div style="margin-left: 10px; font-size: 20px;"><% if trip.destination.split(",").last.include?("United States of America") %><strong><%= trip.destination.split(",")[0...-1].join(",") %></strong><% else %> <strong><%= trip.destination %></strong><% end %>
+              <div style="margin-left: 10px; font-size: 18px;"><% if trip.destination.split(",").last.include?("United States of America") %><strong><%= trip.destination.split(",")[0...-1].join(",") %></strong><% else %> <strong><%= trip.destination %></strong><% end %>
               </div>
               <div class="ride-details" style="font-size: 15px;">
                 <p style="position: relative; top: 4px;"><%= trip.time.strftime("%b %e at %l:%M %p") %></p>
                 <div class="ride-footer">
                   <div id="ridemates">
-                  <strong>Passengers</strong> &nbsp <%= trip.ridemates.count + 1 %> / <%= trip.ride_mates_limit + 1 %>
+                  <i class="fas fa-user-alt"></i> &nbsp <%= trip.ridemates.count + 1 %> / <%= trip.ride_mates_limit + 1 %>
                   </div>
                   <div id="cost">
                   <i class="fas fa-dollar-sign"></i>  &nbsp <%= (trip.estimate / (trip.ridemates.count + 2)).round(2) %>
@@ -39,8 +39,8 @@
                   <% current_location = Geokit::LatLng.new(trip.longitude, trip.latitude) %>
                   <% destination = @markers.last[:lng], @markers.last[:lat] %>
                   <i class="fas fa-walking"></i> &nbsp <%= current_location.distance_to(destination).round(2) %> miles
-                  </div>
                   <% end %>
+                  </div>
                 </div>
               </div>
             </div>
