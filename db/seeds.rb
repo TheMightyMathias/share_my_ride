@@ -268,35 +268,35 @@ puts "creating trips"
 #Bali Trips
 Trip.create!({
   terminal: '1',
-  destination: 'Ayana Resort & Spa, Bali',
-  latitude: -8.787283423331326,
-  longitude: 115.13886451721191,
+  destination: 'Place Charles de Gaulle Etoile, Paris',
+  latitude: 48.873779,
+  longitude:  2.295016,
   time: Time.new(2018,12,14,21,40),
-  estimate: 20,
+  estimate: 40,
   # date: Date.new(2018,12,14),
   user_id: 2,
-  airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
+  airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
   ride_mates_limit: 3
 })
 
 Trip.create!({
   terminal: '1',
-  destination: 'Kubu, Bangli Sub-District',
-  latitude: -8.4303071,
-  longitude: 115.36375929999997,
+  destination: 'Montparnasse Train Station, Paris',
+  latitude: 48.8372728,
+  longitude: 2.3353872999999794,
   time: Time.new(2018,12,14,21,50),
   estimate: 20,
   # date: Date.new(2018,12,14),
-  user_id: 23,
-  airport_id: Airport.where(iata_code:"DPS").ids.join.to_i,
+  user_id: 45,
+  airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
   ride_mates_limit: 3
 })
 
 Trip.create!({
   terminal: '1',
-  destination: 'Bali Volcano',
-  latitude: -8.224417899999997,
-  longitude: 115.39595129999998,
+  destination: 'Place de la Bastille, Paris',
+  latitude: 48.8531827,
+  longitude: 2.3691443000000163,
   time: Time.new(2018,12,14,21,30),
   estimate: 50.14,
   # date: Date.new(2018,12,14),
