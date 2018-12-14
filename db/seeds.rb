@@ -287,7 +287,7 @@ Trip.create!({
   time: Time.new(2018,12,14,21,50),
   estimate: 20,
   # date: Date.new(2018,12,14),
-  user_id: 45,
+  user_id: 23,
   airport_id: Airport.where(iata_code:"CDG").ids.join.to_i,
   ride_mates_limit: 3
 })
