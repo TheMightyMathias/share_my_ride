@@ -58,13 +58,17 @@
           <ul>
             <% t =  @trip.time - Time.now %>
             <% m = t/60 %>
-            <li>Let's meet at the terminal's taxi station in
-              <% if m > 1440 %>
+            <% if t < 0 %> Sorry this trip has left.
+            <li>
+              <% elsif m < 60 %>
+               Let's meet at the terminal's taxi station in <%= m.round %> minute(s)
+               <% elsif m > 1440 %>
+                <% h = m / 60 %>
               <% d = m/1440 %>
-              <%= d.round %> day(s)
+              Let's meet at the terminal's taxi station in <%= d.round %> day(s)
               <% else %>
-              <% d = m %>
-              <%= m.round %> minute(s)
+                <% h = m / 60 %>
+               Let's meet at the terminal's taxi station in <%= h.round %> hour(s)
               <% end %>
             </li>
             <li>
