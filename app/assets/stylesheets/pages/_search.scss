@@ -31,7 +31,8 @@
 }
 
 .card:last-child {
- border-bottom: none;
+ border-bottom: 1px solid #A535CF;
+ // border: 1px solid rgba(220,224,244,0.4); <= this is a gray colour
 }
 
 .ride-details {
