@@ -1,0 +1,41 @@
+<h2 style="text-align:center; margin-bottom:40px;">How was the trip ?</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <% @reviews.each do |review| %>
+        <div class="card" id="mates-card" style="margin-top:30px;">
+
+          <div id="ridemate-confirmation">
+            <% if review.reviewed.photo.blank? %>
+              <img id="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <% else %>
+              <%= cl_image_tag review.reviewed.photo, {id: "avatar-confirmation"} %>
+            <% end %>
+            <div id="user-confirmation">
+              <b> <%= review.reviewed.first_name %></b>
+            </div>
+          </div>
+          <div class="review-form" style="margin-left:10px;">
+            <% if Review.where(trip_id: @trip.id).where(reviewed_id: review.reviewed_id).where(reviewer_id: current_user.id).blank? %>
+<!-- create hidden field for vqlue of review -->
+<!--  -->
+              <%= simple_form_for review do |f| %>
+                <%#= f.collection_radio_buttons :rating, [["Great"], ["Ok"], ["Terrible"]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+                  <%#= b.radio_button  %>
+                  <%#= b.label %>
+                <%# end %>
+                <%= f.input :reviewed_id, :as => :hidden, :input_html => { :value => review.reviewed_id } %>
+                <%= f.input :trip_id, :as => :hidden, :input_html => { :value => review.trip_id } %>
+                <%= f.submit "Terrible", :name => "rating",value: "Terrible", class: "btn-full-small btn-red"%>
+                <%= f.submit "OK", :name => "rating", value: "Ok", class: "btn-full-small btn-blue" %>
+                <%= f.submit "Great", :name => "rating", value: "Great", class: "btn-full-small btn-green" %>
+              <% end %>
+            <% else %>
+              <h4>Sorry you have already rated <%= review.reviewed.first_name %></h4>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

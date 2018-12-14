@@ -1,0 +1,6 @@
+# config/meta.yml
+
+meta_product_name: "ShareMyRide"
+meta_title: "ShareMyRide - Find people to share the cost of a ride"
+meta_description: "Our app helps you find others at the airport who want to share the cost of a ride"
+meta_image: "ShareMyRide1.jpg"                       # should exist in `app/assets/images/`

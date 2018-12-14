@@ -14,7 +14,7 @@
         <div id="ridemate-confirmation">
           <div >
             <% if @trip.user.photo.blank? %>
-            <img cid="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
+            <img id="avatar-confirmation" src='https://www.freeiconspng.com/uploads/user-login-icon-14.png'>
             <% else %>
             <%= cl_image_tag @trip.user.photo, {id: "avatar-confirmation"} %>
             <% end %>
@@ -50,7 +50,7 @@
           </ul>
         </div>
           <div class="container text-center">
-        <% if @request_button = true %>
+        <% if @request_button %>
         Click Below to Order a Ride<br> <%= link_to image_tag("uber_logo2.jpg", :alt => "uber", :class => "uber_button"), "https://m.uber.com/ul/?client_id=#{ENV['UBER_CLIENT_ID']}" %>
         <% end %>
       </div>

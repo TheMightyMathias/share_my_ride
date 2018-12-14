@@ -4,6 +4,7 @@ class Trip < ApplicationRecord
   has_many :ridemates, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :trip_users, through: :ridemates, source: :user, dependent: :destroy
+  has_many :reviews
   validates :destination, presence: true
   validate :estimate_not_nil
 
@@ -13,7 +14,7 @@ class Trip < ApplicationRecord
 
 private
   def send_trip_update
-    UserMailer.ridemateconfirm(self).deliver_now
+    UserMailer.ridemateconfirm(self).deliver_later
   end
 
   def estimate_not_nil

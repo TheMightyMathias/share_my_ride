@@ -77,7 +77,7 @@ class TripsController < ApplicationController
     @ridemate = @ridemates.find_by(user: current_user)
     @mates = @trip.trip_users
     @uber_message = session[:uber_message]
-    if @uber_message.include?("UBER")
+    if @uber_message && @uber_message.include?("UBER")
       @request_button = true
     end
 
@@ -161,6 +161,24 @@ class TripsController < ApplicationController
     @trip.ridemates.destroy
     @trip.destroy
     redirect_to profiles_path
+  end
+
+  def review
+    set_trip
+    @mates = @trip.trip_users
+    @mates = @mates.select do |mate|
+      mate != current_user
+    end
+    @reviews = []
+    if @trip.user != current_user
+      @reviews << Review.new(reviewed_id: @trip.user.id, reviewer_id: current_user.id)
+    end
+    @mates.each do |mate|
+      @reviews << Review.new(reviewed_id: mate.id, reviewer_id: current_user.id)
+    end
+    @reviews.each do |review|
+      review.trip = @trip
+    end
   end
 
   private

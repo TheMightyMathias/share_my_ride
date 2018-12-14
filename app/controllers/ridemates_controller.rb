@@ -16,7 +16,7 @@ class RidematesController < ApplicationController
     @ridemate = Ridemate.new
     @ridemate.trip = @trip
     @ridemate.user = current_user
-    if session[:search]["destination"] == "";
+    if session[:search]["destination"] == ""
       @ridemate.destination = @trip.destination
       @ridemate.longitude = @trip.longitude
       @ridemate.latitude = @trip.latitude
@@ -40,9 +40,9 @@ class RidematesController < ApplicationController
     redirect_to profiles_path
   end
   private
-  # def send_trip_confirm
-  #   UserMailer.tripconfirm(self).deliver_now
-  # end
+  def send_trip_confirm
+    UserMailer.tripconfirm(self).deliver_later
+  end
 
   def set_ridemate
     @ridemate = Ridemate.find(params[:id])
